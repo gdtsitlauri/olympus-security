@@ -167,65 +167,74 @@ An \textit{Audit Logger} maintains an append-only record of all actions.
 
 \begin{figure}[h]
 \centering
+\resizebox{\columnwidth}{!}{%
 \begin{tikzpicture}[
-  box/.style={rectangle, rounded corners=3pt, draw, minimum width=1.5cm,
-              minimum height=0.5cm, font=\tiny, align=center},
-  redbox/.style={box, fill=red!15, draw=red!60},
-  bluebox/.style={box, fill=blue!12, draw=blue!50},
-  graybox/.style={box, fill=gray!10, draw=gray!50},
-  corebox/.style={box, fill=yellow!15, draw=orange!60},
-  arr/.style={-Stealth, thick},
-  node distance=0.35cm
+  box/.style={rectangle, rounded corners=2pt, draw,
+              minimum width=1.3cm, minimum height=0.5cm,
+              font=\tiny, align=center},
+  redbox/.style={box, fill=red!15,    draw=red!60},
+  bluebox/.style={box, fill=blue!12,  draw=blue!50},
+  graybox/.style={box, fill=gray!10,  draw=gray!50},
+  corebox/.style={box, fill=yellow!15,draw=orange!60},
+  arr/.style={-Stealth, thin},
+  node distance=0.2cm
 ]
 
-% Core row
-\node[corebox, minimum width=3.5cm] (orch) {Orchestrator};
-\node[corebox, minimum width=2.0cm, right=0.6cm of orch] (kb) {OLYMPUS-KB};
-\node[corebox, minimum width=1.6cm, right=0.4cm of kb] (log) {Audit Log};
+%% ── ROW 0: header boxes placed by absolute position ──────────────────
+\node[corebox, minimum width=2.4cm] at (0,0)      (orch) {Orchestrator};
+\node[corebox, minimum width=1.8cm] at (4.2,0)    (kb)   {OLYMPUS-KB};
+\node[corebox, minimum width=1.2cm] at (6.2,0)    (log)  {Audit Log};
 
-% Offensive modules
-\node[redbox, below=0.7cm of orch, xshift=-2.1cm] (m1) {M1\\Pentest};
-\node[redbox, right=0.25cm of m1] (m3) {M3\\Zero-Day};
-\node[redbox, right=0.25cm of m3] (m9) {M9\\LLM Atk};
+%% ── ROW 1: 5 module boxes at fixed x positions ───────────────────────
+\node[redbox]  at (0,   -1.4) (m1) {M1\\Pentest};
+\node[redbox]  at (1.5, -1.4) (m3) {M3\\Zero-Day};
+\node[bluebox] at (3.0, -1.4) (m2) {M2\\Virus};
+\node[bluebox] at (4.5, -1.4) (m4) {M4\\Threat};
+\node[bluebox] at (6.0, -1.4) (m5) {M5\\Decept};
 
-% Defensive modules
-\node[bluebox, right=0.25cm of m9] (m2) {M2\\Virus};
-\node[bluebox, right=0.25cm of m2] (m4) {M4\\Threat};
-\node[bluebox, right=0.25cm of m4] (m5) {M5\\Decept};
+%% ── ROW 2: 5 module boxes ────────────────────────────────────────────
+\node[bluebox] at (0,   -2.4) (m7)  {M7\\SocEng};
+\node[bluebox] at (1.5, -2.4) (m8)  {M8\\AI-Int};
+\node[bluebox] at (3.0, -2.4) (m9)  {M9\\LLM Def};
+\node[bluebox] at (4.5, -2.4) (m10) {M10\\Forensic};
+\node[corebox] at (6.0, -2.4) (m6)  {M6\\TITAN};
 
-% More modules row
-\node[bluebox, below=0.35cm of m1, xshift=0.9cm] (m7) {M7\\SocEng};
-\node[bluebox, right=0.25cm of m7] (m8) {M8\\AI-Int};
-\node[bluebox, right=0.25cm of m8] (m10) {M10\\Forensic};
-\node[corebox, right=0.25cm of m10] (m6) {M6\\TITAN};
+%% ── ROW 3: API/infra boxes ───────────────────────────────────────────
+\node[graybox, minimum width=1.6cm] at (0.8, -3.3) (api)  {FastAPI :8000};
+\node[graybox, minimum width=1.6cm] at (3.0, -3.3) (dash) {Streamlit :8501};
+\node[graybox, minimum width=1.4cm] at (5.2, -3.3) (gpu)  {GTX 1650\\CUDA 12.x};
 
-% Arrows from orchestrator to module rows
-\draw[arr] (orch.south) -- ++(0,-0.2) -| (m1.north);
-\draw[arr] (orch.south) -- ++(0,-0.2) -| (m3.north);
-\draw[arr] (orch.south) -- ++(0,-0.2) -| (m9.north);
-\draw[arr] (orch.south) -- ++(0,-0.2) -| (m2.north);
-\draw[arr] (orch.south) -- ++(0,-0.2) -| (m4.north);
-\draw[arr] (orch.south) -- ++(0,-0.2) -| (m5.north);
-\draw[arr] (orch.south) -- ++(0,-0.55) -| (m7.north);
-\draw[arr] (orch.south) -- ++(0,-0.55) -| (m8.north);
-\draw[arr] (orch.south) -- ++(0,-0.55) -| (m10.north);
-\draw[arr] (orch.south) -- ++(0,-0.55) -| (m6.north);
+%% ── ORCHESTRATOR bus ─────────────────────────────────────────────────
+% Drop straight down from orch to bus level
+\coordinate (orchbus) at (0, -0.9);
+\draw (orch.south) -- (orchbus);
+% Horizontal bus from m1 to m5
+\draw (0,-0.9) -- (6.0,-0.9);
+% Drop to each module in row 1
+\draw[arr] (0,  -0.9) -- (m1.north);
+\draw[arr] (1.5,-0.9) -- (m3.north);
+\draw[arr] (3.0,-0.9) -- (m2.north);
+\draw[arr] (4.5,-0.9) -- (m4.north);
+\draw[arr] (6.0,-0.9) -- (m5.north);
 
-% KB connections
-\draw[arr, dashed, gray] (kb.south) -- ++(0,-0.15) -| (m4.north);
-\draw[arr, dashed, gray] (kb.south) -- ++(0,-0.15) -| (m6.north);
+%% ── ROW1 → ROW2 ──────────────────────────────────────────────────────
+\draw[arr] (m1.south)  -- (m7.north);
+\draw[arr] (m3.south)  -- (m8.north);
+\draw[arr] (m2.south)  -- (m9.north);
+\draw[arr] (m4.south)  -- (m10.north);
+\draw[arr] (m5.south)  -- (m6.north);
 
-% API/Dashboard below
-\node[graybox, minimum width=1.8cm, below=0.5cm of m7, xshift=0.6cm] (api) {FastAPI :8000};
-\node[graybox, minimum width=1.8cm, right=0.3cm of api] (dash) {Streamlit :8501};
-\node[graybox, minimum width=1.4cm, right=0.3cm of dash] (gpu) {GTX 1650\\CUDA 12.x};
+%% ── KB dashed connections ────────────────────────────────────────────
+\draw[arr, dashed, gray] (kb.south) -- ++(0,-0.5) -| (m4.north);
+\draw[arr, dashed, gray] (kb.south) -- ++(0,-1.5) -| (m6.north);
 
-\draw[arr] (orch.south) -- ++(0,-1.1) -| (api.north);
-\draw[arr] (orch.south) -- ++(0,-1.1) -| (dash.north);
+%% ── API arrows ───────────────────────────────────────────────────────
+\draw[arr] (m7.south)  -- ++(0,-0.25) -| (api.north);
+\draw[arr] (m9.south)  -- (dash.north);
 
-\end{tikzpicture}
-\caption{OLYMPUS system architecture. The orchestrator coordinates 10 modules
-sharing OLYMPUS-KB. Red = offensive, blue = defensive, yellow = core/evolution.}
+\end{tikzpicture}%
+}
+\caption{OLYMPUS system architecture. Red = offensive, blue = defensive, yellow = core/evolution.}
 \label{fig:arch}
 \end{figure}
 
