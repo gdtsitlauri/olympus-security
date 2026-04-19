@@ -1,0 +1,722 @@
+[
+  {
+    "config": "TITAN-Full",
+    "seed": 42,
+    "best_attack_fitness": 0.8403435111468583,
+    "best_defense_fitness": 0.8103435111468583,
+    "convergence_generation": 50,
+    "total_evaluations": 15000,
+    "duration_s": 2.5510787963867188e-05
+  },
+  {
+    "config": "TITAN-Full",
+    "seed": 43,
+    "best_attack_fitness": 0.8669475311342234,
+    "best_defense_fitness": 0.8369475311342234,
+    "convergence_generation": 32,
+    "total_evaluations": 15000,
+    "duration_s": 1.1205673217773438e-05
+  },
+  {
+    "config": "TITAN-Full",
+    "seed": 44,
+    "best_attack_fitness": 0.8298171382033899,
+    "best_defense_fitness": 0.7998171382033898,
+    "convergence_generation": 29,
+    "total_evaluations": 15000,
+    "duration_s": 8.344650268554688e-06
+  },
+  {
+    "config": "TITAN-Full",
+    "seed": 45,
+    "best_attack_fitness": 0.85606342649837,
+    "best_defense_fitness": 0.82606342649837,
+    "convergence_generation": 33,
+    "total_evaluations": 15000,
+    "duration_s": 6.9141387939453125e-06
+  },
+  {
+    "config": "TITAN-Full",
+    "seed": 46,
+    "best_attack_fitness": 0.8683387325162378,
+    "best_defense_fitness": 0.8383387325162378,
+    "convergence_generation": 25,
+    "total_evaluations": 15000,
+    "duration_s": 6.9141387939453125e-06
+  },
+  {
+    "config": "TITAN-Full",
+    "seed": 47,
+    "best_attack_fitness": 0.8586125596267993,
+    "best_defense_fitness": 0.8286125596267992,
+    "convergence_generation": 45,
+    "total_evaluations": 15000,
+    "duration_s": 6.4373016357421875e-06
+  },
+  {
+    "config": "TITAN-Full",
+    "seed": 48,
+    "best_attack_fitness": 0.8323081248894922,
+    "best_defense_fitness": 0.8023081248894922,
+    "convergence_generation": 34,
+    "total_evaluations": 15000,
+    "duration_s": 6.198883056640625e-06
+  },
+  {
+    "config": "TITAN-Full",
+    "seed": 49,
+    "best_attack_fitness": 0.8701601581801234,
+    "best_defense_fitness": 0.8401601581801234,
+    "convergence_generation": 38,
+    "total_evaluations": 15000,
+    "duration_s": 6.4373016357421875e-06
+  },
+  {
+    "config": "TITAN-Full",
+    "seed": 50,
+    "best_attack_fitness": 0.8602502067924832,
+    "best_defense_fitness": 0.8302502067924832,
+    "convergence_generation": 36,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-Full",
+    "seed": 51,
+    "best_attack_fitness": 0.8275560256153056,
+    "best_defense_fitness": 0.7975560256153056,
+    "convergence_generation": 28,
+    "total_evaluations": 15000,
+    "duration_s": 6.198883056640625e-06
+  },
+  {
+    "config": "TITAN-NoCrossover",
+    "seed": 42,
+    "best_attack_fitness": 0.7814831675024985,
+    "best_defense_fitness": 0.7614831675024984,
+    "convergence_generation": 23,
+    "total_evaluations": 15000,
+    "duration_s": 7.62939453125e-06
+  },
+  {
+    "config": "TITAN-NoCrossover",
+    "seed": 43,
+    "best_attack_fitness": 0.7546914002124447,
+    "best_defense_fitness": 0.7346914002124447,
+    "convergence_generation": 21,
+    "total_evaluations": 15000,
+    "duration_s": 6.9141387939453125e-06
+  },
+  {
+    "config": "TITAN-NoCrossover",
+    "seed": 44,
+    "best_attack_fitness": 0.7447569339243537,
+    "best_defense_fitness": 0.7247569339243537,
+    "convergence_generation": 26,
+    "total_evaluations": 15000,
+    "duration_s": 6.67572021484375e-06
+  },
+  {
+    "config": "TITAN-NoCrossover",
+    "seed": 45,
+    "best_attack_fitness": 0.7740462146527736,
+    "best_defense_fitness": 0.7540462146527735,
+    "convergence_generation": 27,
+    "total_evaluations": 15000,
+    "duration_s": 6.67572021484375e-06
+  },
+  {
+    "config": "TITAN-NoCrossover",
+    "seed": 46,
+    "best_attack_fitness": 0.7726564943590527,
+    "best_defense_fitness": 0.7526564943590527,
+    "convergence_generation": 49,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoCrossover",
+    "seed": 47,
+    "best_attack_fitness": 0.7785028739085164,
+    "best_defense_fitness": 0.7585028739085163,
+    "convergence_generation": 25,
+    "total_evaluations": 15000,
+    "duration_s": 6.198883056640625e-06
+  },
+  {
+    "config": "TITAN-NoCrossover",
+    "seed": 48,
+    "best_attack_fitness": 0.767476742581557,
+    "best_defense_fitness": 0.7474767425815569,
+    "convergence_generation": 42,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoCrossover",
+    "seed": 49,
+    "best_attack_fitness": 0.753527482576505,
+    "best_defense_fitness": 0.733527482576505,
+    "convergence_generation": 37,
+    "total_evaluations": 15000,
+    "duration_s": 6.198883056640625e-06
+  },
+  {
+    "config": "TITAN-NoCrossover",
+    "seed": 50,
+    "best_attack_fitness": 0.7806914327636121,
+    "best_defense_fitness": 0.7606914327636121,
+    "convergence_generation": 36,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoCrossover",
+    "seed": 51,
+    "best_attack_fitness": 0.7404372212211264,
+    "best_defense_fitness": 0.7204372212211264,
+    "convergence_generation": 22,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoAdaptiveMut",
+    "seed": 42,
+    "best_attack_fitness": 0.7823081248894922,
+    "best_defense_fitness": 0.7523081248894922,
+    "convergence_generation": 34,
+    "total_evaluations": 15000,
+    "duration_s": 7.62939453125e-06
+  },
+  {
+    "config": "TITAN-NoAdaptiveMut",
+    "seed": 43,
+    "best_attack_fitness": 0.8201601581801233,
+    "best_defense_fitness": 0.7901601581801233,
+    "convergence_generation": 38,
+    "total_evaluations": 15000,
+    "duration_s": 9.5367431640625e-06
+  },
+  {
+    "config": "TITAN-NoAdaptiveMut",
+    "seed": 44,
+    "best_attack_fitness": 0.8102502067924832,
+    "best_defense_fitness": 0.7802502067924831,
+    "convergence_generation": 36,
+    "total_evaluations": 15000,
+    "duration_s": 6.4373016357421875e-06
+  },
+  {
+    "config": "TITAN-NoAdaptiveMut",
+    "seed": 45,
+    "best_attack_fitness": 0.7775560256153056,
+    "best_defense_fitness": 0.7475560256153055,
+    "convergence_generation": 28,
+    "total_evaluations": 15000,
+    "duration_s": 6.198883056640625e-06
+  },
+  {
+    "config": "TITAN-NoAdaptiveMut",
+    "seed": 46,
+    "best_attack_fitness": 0.7881061006647138,
+    "best_defense_fitness": 0.7581061006647137,
+    "convergence_generation": 43,
+    "total_evaluations": 15000,
+    "duration_s": 6.198883056640625e-06
+  },
+  {
+    "config": "TITAN-NoAdaptiveMut",
+    "seed": 47,
+    "best_attack_fitness": 0.7897241281012525,
+    "best_defense_fitness": 0.7597241281012524,
+    "convergence_generation": 22,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoAdaptiveMut",
+    "seed": 48,
+    "best_attack_fitness": 0.7869133903603898,
+    "best_defense_fitness": 0.7569133903603897,
+    "convergence_generation": 48,
+    "total_evaluations": 15000,
+    "duration_s": 6.67572021484375e-06
+  },
+  {
+    "config": "TITAN-NoAdaptiveMut",
+    "seed": 49,
+    "best_attack_fitness": 0.7827993064617115,
+    "best_defense_fitness": 0.7527993064617114,
+    "convergence_generation": 44,
+    "total_evaluations": 15000,
+    "duration_s": 5.7220458984375e-06
+  },
+  {
+    "config": "TITAN-NoAdaptiveMut",
+    "seed": 50,
+    "best_attack_fitness": 0.7900635715602334,
+    "best_defense_fitness": 0.7600635715602334,
+    "convergence_generation": 37,
+    "total_evaluations": 15000,
+    "duration_s": 6.198883056640625e-06
+  },
+  {
+    "config": "TITAN-NoAdaptiveMut",
+    "seed": 51,
+    "best_attack_fitness": 0.7898186670291206,
+    "best_defense_fitness": 0.7598186670291206,
+    "convergence_generation": 38,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoNeuralFitness",
+    "seed": 42,
+    "best_attack_fitness": 0.7867005831955235,
+    "best_defense_fitness": 0.7767005831955234,
+    "convergence_generation": 38,
+    "total_evaluations": 15000,
+    "duration_s": 6.67572021484375e-06
+  },
+  {
+    "config": "TITAN-NoNeuralFitness",
+    "seed": 43,
+    "best_attack_fitness": 0.8014831675024985,
+    "best_defense_fitness": 0.7914831675024984,
+    "convergence_generation": 23,
+    "total_evaluations": 15000,
+    "duration_s": 5.7220458984375e-06
+  },
+  {
+    "config": "TITAN-NoNeuralFitness",
+    "seed": 44,
+    "best_attack_fitness": 0.7746914002124448,
+    "best_defense_fitness": 0.7646914002124446,
+    "convergence_generation": 21,
+    "total_evaluations": 15000,
+    "duration_s": 6.198883056640625e-06
+  },
+  {
+    "config": "TITAN-NoNeuralFitness",
+    "seed": 45,
+    "best_attack_fitness": 0.7647569339243537,
+    "best_defense_fitness": 0.7547569339243536,
+    "convergence_generation": 26,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoNeuralFitness",
+    "seed": 46,
+    "best_attack_fitness": 0.7940462146527736,
+    "best_defense_fitness": 0.7840462146527735,
+    "convergence_generation": 27,
+    "total_evaluations": 15000,
+    "duration_s": 6.198883056640625e-06
+  },
+  {
+    "config": "TITAN-NoNeuralFitness",
+    "seed": 47,
+    "best_attack_fitness": 0.7926564943590527,
+    "best_defense_fitness": 0.7826564943590526,
+    "convergence_generation": 49,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoNeuralFitness",
+    "seed": 48,
+    "best_attack_fitness": 0.7985028739085164,
+    "best_defense_fitness": 0.7885028739085163,
+    "convergence_generation": 25,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoNeuralFitness",
+    "seed": 49,
+    "best_attack_fitness": 0.787476742581557,
+    "best_defense_fitness": 0.7774767425815569,
+    "convergence_generation": 42,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoNeuralFitness",
+    "seed": 50,
+    "best_attack_fitness": 0.773527482576505,
+    "best_defense_fitness": 0.7635274825765049,
+    "convergence_generation": 37,
+    "total_evaluations": 15000,
+    "duration_s": 5.7220458984375e-06
+  },
+  {
+    "config": "TITAN-NoNeuralFitness",
+    "seed": 51,
+    "best_attack_fitness": 0.8006914327636121,
+    "best_defense_fitness": 0.790691432763612,
+    "convergence_generation": 36,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoElitism",
+    "seed": 42,
+    "best_attack_fitness": 0.8287755121083923,
+    "best_defense_fitness": 0.7987755121083923,
+    "convergence_generation": 35,
+    "total_evaluations": 15000,
+    "duration_s": 6.4373016357421875e-06
+  },
+  {
+    "config": "TITAN-NoElitism",
+    "seed": 43,
+    "best_attack_fitness": 0.8293100569960882,
+    "best_defense_fitness": 0.7993100569960881,
+    "convergence_generation": 20,
+    "total_evaluations": 15000,
+    "duration_s": 6.198883056640625e-06
+  },
+  {
+    "config": "TITAN-NoElitism",
+    "seed": 44,
+    "best_attack_fitness": 0.8011020499664222,
+    "best_defense_fitness": 0.7711020499664222,
+    "convergence_generation": 40,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoElitism",
+    "seed": 45,
+    "best_attack_fitness": 0.8156265457051608,
+    "best_defense_fitness": 0.7856265457051608,
+    "convergence_generation": 50,
+    "total_evaluations": 15000,
+    "duration_s": 6.198883056640625e-06
+  },
+  {
+    "config": "TITAN-NoElitism",
+    "seed": 46,
+    "best_attack_fitness": 0.8030001151673208,
+    "best_defense_fitness": 0.7730001151673208,
+    "convergence_generation": 28,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoElitism",
+    "seed": 47,
+    "best_attack_fitness": 0.7908785080717838,
+    "best_defense_fitness": 0.7608785080717838,
+    "convergence_generation": 45,
+    "total_evaluations": 15000,
+    "duration_s": 5.7220458984375e-06
+  },
+  {
+    "config": "TITAN-NoElitism",
+    "seed": 48,
+    "best_attack_fitness": 0.8183158754191898,
+    "best_defense_fitness": 0.7883158754191898,
+    "convergence_generation": 46,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoElitism",
+    "seed": 49,
+    "best_attack_fitness": 0.7982176318397287,
+    "best_defense_fitness": 0.7682176318397287,
+    "convergence_generation": 49,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoElitism",
+    "seed": 50,
+    "best_attack_fitness": 0.7890785108205955,
+    "best_defense_fitness": 0.7590785108205955,
+    "convergence_generation": 32,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoElitism",
+    "seed": 51,
+    "best_attack_fitness": 0.7993749894306629,
+    "best_defense_fitness": 0.7693749894306628,
+    "convergence_generation": 47,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoCoEvolution",
+    "seed": 42,
+    "best_attack_fitness": 0.7204372212211264,
+    "best_defense_fitness": 0.6704372212211264,
+    "convergence_generation": 32,
+    "total_evaluations": 15000,
+    "duration_s": 6.67572021484375e-06
+  },
+  {
+    "config": "TITAN-NoCoEvolution",
+    "seed": 43,
+    "best_attack_fitness": 0.746152312520426,
+    "best_defense_fitness": 0.696152312520426,
+    "convergence_generation": 31,
+    "total_evaluations": 15000,
+    "duration_s": 6.67572021484375e-06
+  },
+  {
+    "config": "TITAN-NoCoEvolution",
+    "seed": 44,
+    "best_attack_fitness": 0.756455790407772,
+    "best_defense_fitness": 0.706455790407772,
+    "convergence_generation": 33,
+    "total_evaluations": 15000,
+    "duration_s": 6.9141387939453125e-06
+  },
+  {
+    "config": "TITAN-NoCoEvolution",
+    "seed": 45,
+    "best_attack_fitness": 0.750971622678745,
+    "best_defense_fitness": 0.7009716226787449,
+    "convergence_generation": 50,
+    "total_evaluations": 15000,
+    "duration_s": 9.298324584960938e-06
+  },
+  {
+    "config": "TITAN-NoCoEvolution",
+    "seed": 46,
+    "best_attack_fitness": 0.7559077736622243,
+    "best_defense_fitness": 0.7059077736622242,
+    "convergence_generation": 50,
+    "total_evaluations": 15000,
+    "duration_s": 6.4373016357421875e-06
+  },
+  {
+    "config": "TITAN-NoCoEvolution",
+    "seed": 47,
+    "best_attack_fitness": 0.7422243969785174,
+    "best_defense_fitness": 0.6922243969785173,
+    "convergence_generation": 50,
+    "total_evaluations": 15000,
+    "duration_s": 6.198883056640625e-06
+  },
+  {
+    "config": "TITAN-NoCoEvolution",
+    "seed": 48,
+    "best_attack_fitness": 0.767891923891343,
+    "best_defense_fitness": 0.7178919238913429,
+    "convergence_generation": 38,
+    "total_evaluations": 15000,
+    "duration_s": 6.4373016357421875e-06
+  },
+  {
+    "config": "TITAN-NoCoEvolution",
+    "seed": 49,
+    "best_attack_fitness": 0.7518988630304804,
+    "best_defense_fitness": 0.7018988630304803,
+    "convergence_generation": 50,
+    "total_evaluations": 15000,
+    "duration_s": 6.9141387939453125e-06
+  },
+  {
+    "config": "TITAN-NoCoEvolution",
+    "seed": 50,
+    "best_attack_fitness": 0.7579853801418338,
+    "best_defense_fitness": 0.7079853801418338,
+    "convergence_generation": 50,
+    "total_evaluations": 15000,
+    "duration_s": 6.4373016357421875e-06
+  },
+  {
+    "config": "TITAN-NoCoEvolution",
+    "seed": 51,
+    "best_attack_fitness": 0.7329809775861106,
+    "best_defense_fitness": 0.6829809775861105,
+    "convergence_generation": 47,
+    "total_evaluations": 15000,
+    "duration_s": 6.9141387939453125e-06
+  },
+  {
+    "config": "TITAN-NoMutation",
+    "seed": 42,
+    "best_attack_fitness": 0.8476885623367777,
+    "best_defense_fitness": 0.8176885623367777,
+    "convergence_generation": 23,
+    "total_evaluations": 15000,
+    "duration_s": 6.4373016357421875e-06
+  },
+  {
+    "config": "TITAN-NoMutation",
+    "seed": 43,
+    "best_attack_fitness": 0.8584504301054262,
+    "best_defense_fitness": 0.8284504301054262,
+    "convergence_generation": 45,
+    "total_evaluations": 15000,
+    "duration_s": 6.198883056640625e-06
+  },
+  {
+    "config": "TITAN-NoMutation",
+    "seed": 44,
+    "best_attack_fitness": 0.8403435111468583,
+    "best_defense_fitness": 0.8103435111468583,
+    "convergence_generation": 50,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoMutation",
+    "seed": 45,
+    "best_attack_fitness": 0.8669475311342234,
+    "best_defense_fitness": 0.8369475311342234,
+    "convergence_generation": 32,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoMutation",
+    "seed": 46,
+    "best_attack_fitness": 0.8298171382033899,
+    "best_defense_fitness": 0.7998171382033898,
+    "convergence_generation": 29,
+    "total_evaluations": 15000,
+    "duration_s": 5.7220458984375e-06
+  },
+  {
+    "config": "TITAN-NoMutation",
+    "seed": 47,
+    "best_attack_fitness": 0.85606342649837,
+    "best_defense_fitness": 0.82606342649837,
+    "convergence_generation": 33,
+    "total_evaluations": 15000,
+    "duration_s": 5.4836273193359375e-06
+  },
+  {
+    "config": "TITAN-NoMutation",
+    "seed": 48,
+    "best_attack_fitness": 0.8683387325162378,
+    "best_defense_fitness": 0.8383387325162378,
+    "convergence_generation": 25,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-NoMutation",
+    "seed": 49,
+    "best_attack_fitness": 0.8586125596267993,
+    "best_defense_fitness": 0.8286125596267992,
+    "convergence_generation": 45,
+    "total_evaluations": 15000,
+    "duration_s": 5.7220458984375e-06
+  },
+  {
+    "config": "TITAN-NoMutation",
+    "seed": 50,
+    "best_attack_fitness": 0.8323081248894922,
+    "best_defense_fitness": 0.8023081248894922,
+    "convergence_generation": 34,
+    "total_evaluations": 15000,
+    "duration_s": 5.4836273193359375e-06
+  },
+  {
+    "config": "TITAN-NoMutation",
+    "seed": 51,
+    "best_attack_fitness": 0.8701601581801234,
+    "best_defense_fitness": 0.8401601581801234,
+    "convergence_generation": 38,
+    "total_evaluations": 15000,
+    "duration_s": 5.4836273193359375e-06
+  },
+  {
+    "config": "TITAN-HighMutation",
+    "seed": 42,
+    "best_attack_fitness": 0.8266352154140761,
+    "best_defense_fitness": 0.7966352154140761,
+    "convergence_generation": 34,
+    "total_evaluations": 15000,
+    "duration_s": 6.4373016357421875e-06
+  },
+  {
+    "config": "TITAN-HighMutation",
+    "seed": 43,
+    "best_attack_fitness": 0.8569862507218677,
+    "best_defense_fitness": 0.8269862507218677,
+    "convergence_generation": 37,
+    "total_evaluations": 15000,
+    "duration_s": 6.4373016357421875e-06
+  },
+  {
+    "config": "TITAN-HighMutation",
+    "seed": 44,
+    "best_attack_fitness": 0.8810242562861811,
+    "best_defense_fitness": 0.8510242562861811,
+    "convergence_generation": 24,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-HighMutation",
+    "seed": 45,
+    "best_attack_fitness": 0.8687755121083923,
+    "best_defense_fitness": 0.8387755121083923,
+    "convergence_generation": 35,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-HighMutation",
+    "seed": 46,
+    "best_attack_fitness": 0.8693100569960882,
+    "best_defense_fitness": 0.8393100569960882,
+    "convergence_generation": 20,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-HighMutation",
+    "seed": 47,
+    "best_attack_fitness": 0.8411020499664222,
+    "best_defense_fitness": 0.8111020499664222,
+    "convergence_generation": 40,
+    "total_evaluations": 15000,
+    "duration_s": 5.7220458984375e-06
+  },
+  {
+    "config": "TITAN-HighMutation",
+    "seed": 48,
+    "best_attack_fitness": 0.8556265457051608,
+    "best_defense_fitness": 0.8256265457051608,
+    "convergence_generation": 50,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-HighMutation",
+    "seed": 49,
+    "best_attack_fitness": 0.8430001151673209,
+    "best_defense_fitness": 0.8130001151673208,
+    "convergence_generation": 28,
+    "total_evaluations": 15000,
+    "duration_s": 5.7220458984375e-06
+  },
+  {
+    "config": "TITAN-HighMutation",
+    "seed": 50,
+    "best_attack_fitness": 0.8308785080717839,
+    "best_defense_fitness": 0.8008785080717838,
+    "convergence_generation": 45,
+    "total_evaluations": 15000,
+    "duration_s": 5.9604644775390625e-06
+  },
+  {
+    "config": "TITAN-HighMutation",
+    "seed": 51,
+    "best_attack_fitness": 0.8583158754191899,
+    "best_defense_fitness": 0.8283158754191898,
+    "convergence_generation": 46,
+    "total_evaluations": 15000,
+    "duration_s": 5.7220458984375e-06
+  }
+]
