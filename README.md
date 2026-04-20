@@ -1,4 +1,9 @@
-# ⚡ OLYMPUS — Autonomous Security Intelligence System
+# OLYMPUS — Autonomous Security Intelligence System
+
+**Author:** George David Tsitlauri  
+**Affiliation:** Dept. of Informatics & Telecommunications, University of Thessaly, Greece  
+**Contact:** gdtsitlauri@gmail.com  
+**Year:** 2026
 
 **OLYMPUS** (Offensive and Defensive Autonomous Security Intelligence System) is the most complete open-source autonomous AI security framework ever built. It integrates 10 security intelligence modules across all major cybersecurity domains, unified by a shared knowledge base and the novel **OLYMPUS-TITAN** co-evolutionary algorithm.
 
@@ -308,7 +313,19 @@ Ethical use only. See license for full disclaimer.
 
 ## Author
 
-**George David Tsitlauri**
-AI & Systems Engineer
-Informatics & Telecommunications, University of Thessaly, Greece
+**George David Tsitlauri**  
+**Affiliation:** Dept. of Informatics & Telecommunications, University of Thessaly, Greece  
+**Contact:** gdtsitlauri@gmail.com  
 © 2026
+
+## Citation
+
+```bibtex
+@misc{tsitlauri2026olympus,
+  author = {George David Tsitlauri},
+  title  = {OLYMPUS: An Autonomous AI Security Intelligence Framework with Co-Evolutionary Attack-Defense Optimization via TITAN},
+  year   = {2026},
+  institution = {University of Thessaly},
+  email  = {gdtsitlauri@gmail.com}
+}
+```
