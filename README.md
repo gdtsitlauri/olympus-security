@@ -2,10 +2,6 @@
 
 **AI-native cyber offense/defense research platform for synthetic adversarial experimentation, adaptive security reasoning, and co-evolutionary attacker/defender studies.**
 
-**Author:** George David Tsitlauri  
-**Email:** gdtsitlauri@gmail.com  
-**Website:** [gdtsitlauri.dev](https://gdtsitlauri.dev)  
-**GitHub:** [github.com/gdtsitlauri](https://github.com/gdtsitlauri)
 
 | Item | Status |
 | --- | --- |
@@ -15,6 +11,16 @@
 | TITAN co-evolution and ablation pipeline | Implemented |
 | Real operational benchmark campaigns | Not yet committed |
 | Safe public claim | High-end synthetic attacker/defender research platform |
+
+
+## Project Metadata
+
+| Field | Value |
+| --- | --- |
+| Author | George David Tsitlauri |
+| Affiliation | Dept. of Informatics & Telecommunications, University of Thessaly, Greece |
+| Contact | gdtsitlauri@gmail.com |
+| Year | 2026 |
 
 ## Overview
 
@@ -154,6 +160,19 @@ OLYMPUS is not currently claiming:
 
 Those boundaries are deliberate. They make the repo stronger, not weaker, because the current claims are matched by the saved evidence.
 
+## Why OLYMPUS Can Still Be Top-Tier
+
+OLYMPUS does not need real public-benchmark malware or phishing tables to be a
+strong repo, because its intended research identity is different:
+
+- it is a synthetic-by-design adaptive cyber experimentation platform,
+- TITAN gives it a real attacker/defender optimization center,
+- the codebase, API, dashboard, ablations, and evidence typing are all real and
+  already integrated.
+
+The right top-tier reading is therefore not "best real-world IDS", but
+"flagship simulation-first cyber-AI platform for controlled red/blue research."
+
 ## Repository Layout
 
 ```text
@@ -220,17 +239,4 @@ The experiment scripts now write:
 - expand module-level ablations beyond the currently exported studies
 - connect synthetic strategy search to richer environment simulators and agent-based red/blue exercises
 
-## Citation
 
-```bibtex
-@misc{tsitlauri2026olympussecurity,
-  author = {George David Tsitlauri},
-  title  = {OLYMPUS-SECURITY: AI-native cyber offense/defense research platform},
-  year   = {2026},
-  url    = {https://github.com/gdtsitlauri/olympus-security}
-}
-```
-
-## License
-
-MIT License.
