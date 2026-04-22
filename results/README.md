@@ -1,17 +1,25 @@
 # OLYMPUS Results Notes
 
-The files in this directory are synthetic calibration artifacts unless explicitly stated otherwise.
+The files under `results/` are synthetic or simulation-first research artifacts unless a
+future release explicitly adds external benchmark raw outputs and labels them separately.
 
-Current intended use:
+## What These Files Are For
 
 - internal comparative sanity checks
-- pipeline/export validation
-- documentation of relative behavior under seeded toy scenarios
+- attacker/defender calibration under seeded synthetic scenarios
+- export-pipeline validation and regression tracking
+- preserving tables and JSON summaries that match the paper and README
 
-Current non-goals:
+## What These Files Do Not Prove
 
-- real-world security benchmark claims
-- deployment-performance claims
-- external leaderboard positioning
+- real-world SOC or enterprise deployment performance
+- public-benchmark leadership on malware, phishing, or jailbreak datasets
+- operational superiority over fielded commercial tools
 
-Before making strong empirical claims, rerun the affected modules on real datasets and store the corresponding raw outputs alongside these synthetic calibration files.
+## Subdirectories
+
+- `comparison_tables/`: seeded comparison summaries for Modules 2, 6, 7, and 9
+- `ablation/`: TITAN component-ablation summaries
+
+Inspect the per-folder READMEs and the `metadata` blocks inside the JSON exports before
+citing any number from this directory.

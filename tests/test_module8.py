@@ -7,6 +7,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 torch = pytest.importorskip("torch")
+if not all(hasattr(torch, attr) for attr in ("manual_seed", "tensor", "cuda")):
+    pytest.skip("usable torch runtime not available", allow_module_level=True)
 
 
 def test_all_on_local_data():

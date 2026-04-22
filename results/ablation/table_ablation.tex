@@ -1,19 +1,19 @@
 \begin{table}[h]
 \centering
-\caption{OLYMPUS-TITAN Ablation Study}
+\caption{Synthetic TITAN ablation summary (mean $\pm$ std over 10 seeds).}
 \label{tab:ablation}
 \begin{tabular}{lrrr}
 \toprule
 Configuration & Attack Fitness & Defense Fitness & Conv. Gen. \\
 \midrule
-\textbf{TITAN-Full} & 0.8510 & 0.8210 & 35.0 \\
-TITAN-NoCrossover & 0.7648 & 0.7448 & 30.8 \\
-TITAN-NoAdaptiveMut & 0.7918 & 0.7618 & 36.8 \\
-TITAN-NoNeuralFitness & 0.7875 & 0.7775 & 32.4 \\
-TITAN-NoElitism & 0.8074 & 0.7774 & 39.2 \\
-TITAN-NoCoEvolution & 0.7483 & 0.6983 & 43.1 \\
-TITAN-NoMutation & 0.8529 & 0.8229 & 35.4 \\
-TITAN-HighMutation & 0.8532 & 0.8232 & 35.9 \\
+TITAN-NoMutation & 0.8576$\pm$0.0157 & 0.8276$\pm$0.0157 & 32.5$\pm$6.9 \\
+TITAN-HighMutation & 0.8546$\pm$0.0194 & 0.8246$\pm$0.0194 & 33.9$\pm$8.9 \\
+TITAN-Full & \textbf{0.8533$\pm$0.0158} & \textbf{0.8233$\pm$0.0158} & 40.3$\pm$8.8 \\
+TITAN-NoElitism & 0.8103$\pm$0.0067 & 0.7803$\pm$0.0067 & 38.0$\pm$10.7 \\
+TITAN-NoNeuralFitness & 0.8004$\pm$0.0131 & 0.7904$\pm$0.0131 & 37.1$\pm$9.7 \\
+TITAN-NoAdaptiveMut & 0.7982$\pm$0.0148 & 0.7682$\pm$0.0148 & 31.7$\pm$8.4 \\
+TITAN-NoCrossover & 0.7742$\pm$0.0158 & 0.7542$\pm$0.0158 & 39.6$\pm$4.5 \\
+TITAN-NoCoEvolution & 0.7379$\pm$0.0145 & 0.6879$\pm$0.0145 & 42.7$\pm$9.2 \\
 \bottomrule
 \end{tabular}
 \end{table}

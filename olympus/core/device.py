@@ -6,7 +6,9 @@ from typing import Optional
 
 try:
     import torch
-    _TORCH_AVAILABLE = True
+    _TORCH_AVAILABLE = all(
+        hasattr(torch, attr) for attr in ("device", "Tensor", "cuda")
+    ) and hasattr(torch.cuda, "is_available")
 except ImportError:
     _TORCH_AVAILABLE = False
 

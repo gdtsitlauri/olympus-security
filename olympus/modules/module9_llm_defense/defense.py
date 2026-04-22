@@ -165,8 +165,17 @@ class JailbreakDetector:
         else:
             risk = min(pattern_score * 20, 100.0)
 
-        is_jailbreak = risk > 40 or any(n in ("prompt_injection", "harmful_extraction")
-                                         for n, _ in detected)
+        high_risk_patterns = {
+            "prompt_injection",
+            "harmful_extraction",
+            "role_confusion",
+            "instruction_override",
+            "goal_hijacking",
+        }
+        if any(name in high_risk_patterns for name, _ in detected):
+            risk = max(risk, 55.0)
+
+        is_jailbreak = risk > 40 or any(n in high_risk_patterns for n, _ in detected)
         confidence = min(0.5 + risk / 200, 0.99)
 
         if risk > 70:

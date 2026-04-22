@@ -1,1720 +1,2935 @@
 {
-  "module2_malware_detection": [
-    {
-      "method": "OLYMPUS-CNN+GBM",
-      "seed": 42,
-      "duration_s": 0.0010652542114257812,
-      "accuracy": 0.979,
-      "precision": 0.9900596401788079,
-      "recall": 0.9688715934457751,
-      "f1": 0.9793505305811665,
-      "fpr": 0.02
+  "metadata": {
+    "project": "OLYMPUS-SECURITY",
+    "schema_version": "2.0",
+    "generated_at_utc": "2026-04-22T16:17:48+00:00",
+    "author": "George David Tsitlauri",
+    "contact": "gdtsitlauri@gmail.com",
+    "website": "https://gdtsitlauri.dev",
+    "github": "https://github.com/gdtsitlauri",
+    "evidence_basis": "synthetic-calibration",
+    "intended_use": "internal comparative sanity checks, export validation, and simulation-first attacker/defender research iteration",
+    "not_for": "real-world benchmark claims, deployment-performance claims, or external leaderboard comparisons",
+    "seeds": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51
+    ],
+    "notes": [
+      "Module 2, 7, and 9 experiments are seeded synthetic detection studies.",
+      "Module 6 is a seeded co-evolutionary search calibration under a shared synthetic fitness model.",
+      "Use external datasets or cyber ranges before making public performance claims beyond this repo."
+    ]
+  },
+  "experiments": {
+    "module2_malware_detection": {
+      "experiment_metadata": {
+        "title": "Module 2 Synthetic Malware Detection Calibration",
+        "module": "Module 2 / Malware Detection",
+        "evidence_type": "synthetic benchmark-style calibration",
+        "scenario": "Seeded binary classification simulation used to sanity-check the relative behavior of the OLYMPUS malware stack against lightweight reference detectors.",
+        "primary_metric": "f1",
+        "reference_method": "Random Forest (baseline)",
+        "null_anchor": null,
+        "metric_directions": {
+          "accuracy": "higher",
+          "precision": "higher",
+          "recall": "higher",
+          "f1": "higher",
+          "fpr": "lower"
+        },
+        "metric_notes": {
+          "accuracy": "Synthetic balanced classification accuracy under the seeded toy task.",
+          "precision": "Synthetic positive predictive value under the seeded toy task.",
+          "recall": "Synthetic malware recall under the seeded toy task.",
+          "f1": "Synthetic harmonic mean of precision and recall under the seeded toy task.",
+          "fpr": "Injected false-positive-rate target for the seeded toy task."
+        },
+        "claims_supported": [
+          "relative module calibration inside the current synthetic harness",
+          "pipeline/export reproducibility across seeds",
+          "directional comparison against lightweight reference detectors"
+        ],
+        "not_claimed": [
+          "real-world malware-detection superiority",
+          "EMBER or VirusShare benchmark leadership",
+          "deployment-ready SOC false-positive behavior"
+        ]
+      },
+      "summary": {
+        "primary_metric": "f1",
+        "seed_count": 10,
+        "method_count": 6,
+        "recommended_reading": "Read the primary metric first, then inspect the raw seed-level rows before making any claims beyond synthetic calibration.",
+        "primary_ordering": [
+          "OLYMPUS-CNN+GBM",
+          "CNN-only",
+          "GBM-only",
+          "Random Forest (baseline)",
+          "Signature-based (ClamAV)",
+          "Heuristic-only"
+        ],
+        "metric_summaries": {
+          "accuracy": {
+            "direction": "higher",
+            "interpretation": "Synthetic balanced classification accuracy under the seeded toy task.",
+            "reference_method": "Random Forest (baseline)",
+            "ordering": [
+              "OLYMPUS-CNN+GBM",
+              "CNN-only",
+              "GBM-only",
+              "Random Forest (baseline)",
+              "Signature-based (ClamAV)",
+              "Heuristic-only"
+            ],
+            "methods": {
+              "OLYMPUS-CNN+GBM": {
+                "mean": 0.9753,
+                "std": 0.004,
+                "ci_lo": 0.9728,
+                "ci_hi": 0.9775,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -7.638,
+                "significant_p05": true
+              },
+              "CNN-only": {
+                "mean": 0.945,
+                "std": 0.0056,
+                "ci_lo": 0.9416,
+                "ci_hi": 0.9482,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -4.189,
+                "significant_p05": true
+              },
+              "GBM-only": {
+                "mean": 0.9279,
+                "std": 0.0095,
+                "ci_lo": 0.9227,
+                "ci_hi": 0.9338,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -2.1102,
+                "significant_p05": true
+              },
+              "Random Forest (baseline)": {
+                "mean": 0.9045,
+                "std": 0.0125,
+                "ci_lo": 0.8964,
+                "ci_hi": 0.9111,
+                "n": 10
+              },
+              "Signature-based (ClamAV)": {
+                "mean": 0.8602,
+                "std": 0.009,
+                "ci_lo": 0.8543,
+                "ci_hi": 0.8647,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 4.0666,
+                "significant_p05": true
+              },
+              "Heuristic-only": {
+                "mean": 0.7657,
+                "std": 0.0178,
+                "ci_lo": 0.7554,
+                "ci_hi": 0.777,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 9.026,
+                "significant_p05": true
+              }
+            }
+          },
+          "precision": {
+            "direction": "higher",
+            "interpretation": "Synthetic positive predictive value under the seeded toy task.",
+            "reference_method": "Random Forest (baseline)",
+            "ordering": [
+              "Signature-based (ClamAV)",
+              "OLYMPUS-CNN+GBM",
+              "CNN-only",
+              "GBM-only",
+              "Random Forest (baseline)",
+              "Heuristic-only"
+            ],
+            "methods": {
+              "OLYMPUS-CNN+GBM": {
+                "mean": 0.9824,
+                "std": 0.0057,
+                "ci_lo": 0.979,
+                "ci_hi": 0.9855,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -4.5286,
+                "significant_p05": true
+              },
+              "CNN-only": {
+                "mean": 0.9589,
+                "std": 0.0061,
+                "ci_lo": 0.9552,
+                "ci_hi": 0.9626,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -2.6342,
+                "significant_p05": true
+              },
+              "GBM-only": {
+                "mean": 0.9454,
+                "std": 0.0104,
+                "ci_lo": 0.9392,
+                "ci_hi": 0.9516,
+                "n": 10,
+                "wilcoxon_W": 5,
+                "p_value": 0.0218,
+                "cohens_d": -1.4272,
+                "significant_p05": true
+              },
+              "Random Forest (baseline)": {
+                "mean": 0.9254,
+                "std": 0.0169,
+                "ci_lo": 0.9155,
+                "ci_hi": 0.935,
+                "n": 10
+              },
+              "Signature-based (ClamAV)": {
+                "mean": 0.9872,
+                "std": 0.0078,
+                "ci_lo": 0.9824,
+                "ci_hi": 0.9913,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -4.6966,
+                "significant_p05": true
+              },
+              "Heuristic-only": {
+                "mean": 0.8527,
+                "std": 0.0191,
+                "ci_lo": 0.8415,
+                "ci_hi": 0.8647,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 4.0325,
+                "significant_p05": true
+              }
+            }
+          },
+          "recall": {
+            "direction": "higher",
+            "interpretation": "Synthetic malware recall under the seeded toy task.",
+            "reference_method": "Random Forest (baseline)",
+            "ordering": [
+              "OLYMPUS-CNN+GBM",
+              "CNN-only",
+              "GBM-only",
+              "Random Forest (baseline)",
+              "Signature-based (ClamAV)",
+              "Heuristic-only"
+            ],
+            "methods": {
+              "OLYMPUS-CNN+GBM": {
+                "mean": 0.9682,
+                "std": 0.0073,
+                "ci_lo": 0.9634,
+                "ci_hi": 0.9722,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -6.1773,
+                "significant_p05": true
+              },
+              "CNN-only": {
+                "mean": 0.9307,
+                "std": 0.011,
+                "ci_lo": 0.924,
+                "ci_hi": 0.9367,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -3.248,
+                "significant_p05": true
+              },
+              "GBM-only": {
+                "mean": 0.9092,
+                "std": 0.0142,
+                "ci_lo": 0.9007,
+                "ci_hi": 0.9173,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -1.6993,
+                "significant_p05": true
+              },
+              "Random Forest (baseline)": {
+                "mean": 0.8812,
+                "std": 0.0185,
+                "ci_lo": 0.8699,
+                "ci_hi": 0.8926,
+                "n": 10
+              },
+              "Signature-based (ClamAV)": {
+                "mean": 0.7314,
+                "std": 0.0195,
+                "ci_lo": 0.7184,
+                "ci_hi": 0.7412,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 7.8717,
+                "significant_p05": true
+              },
+              "Heuristic-only": {
+                "mean": 0.6464,
+                "std": 0.0217,
+                "ci_lo": 0.6331,
+                "ci_hi": 0.6598,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 11.6238,
+                "significant_p05": true
+              }
+            }
+          },
+          "f1": {
+            "direction": "higher",
+            "interpretation": "Synthetic harmonic mean of precision and recall under the seeded toy task.",
+            "reference_method": "Random Forest (baseline)",
+            "ordering": [
+              "OLYMPUS-CNN+GBM",
+              "CNN-only",
+              "GBM-only",
+              "Random Forest (baseline)",
+              "Signature-based (ClamAV)",
+              "Heuristic-only"
+            ],
+            "methods": {
+              "OLYMPUS-CNN+GBM": {
+                "mean": 0.9752,
+                "std": 0.0045,
+                "ci_lo": 0.9724,
+                "ci_hi": 0.9777,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -6.8747,
+                "significant_p05": true
+              },
+              "CNN-only": {
+                "mean": 0.9445,
+                "std": 0.006,
+                "ci_lo": 0.9409,
+                "ci_hi": 0.9478,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -3.8353,
+                "significant_p05": true
+              },
+              "GBM-only": {
+                "mean": 0.9269,
+                "std": 0.0104,
+                "ci_lo": 0.921,
+                "ci_hi": 0.9332,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -1.9491,
+                "significant_p05": true
+              },
+              "Random Forest (baseline)": {
+                "mean": 0.9026,
+                "std": 0.0142,
+                "ci_lo": 0.8934,
+                "ci_hi": 0.9103,
+                "n": 10
+              },
+              "Signature-based (ClamAV)": {
+                "mean": 0.8402,
+                "std": 0.0149,
+                "ci_lo": 0.8306,
+                "ci_hi": 0.8478,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 4.292,
+                "significant_p05": true
+              },
+              "Heuristic-only": {
+                "mean": 0.7353,
+                "std": 0.0198,
+                "ci_lo": 0.7233,
+                "ci_hi": 0.7478,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 9.7104,
+                "significant_p05": true
+              }
+            }
+          },
+          "fpr": {
+            "direction": "lower",
+            "interpretation": "Injected false-positive-rate target for the seeded toy task.",
+            "reference_method": "Random Forest (baseline)",
+            "ordering": [
+              "Signature-based (ClamAV)",
+              "OLYMPUS-CNN+GBM",
+              "CNN-only",
+              "GBM-only",
+              "Random Forest (baseline)",
+              "Heuristic-only"
+            ],
+            "methods": {
+              "OLYMPUS-CNN+GBM": {
+                "mean": 0.02,
+                "std": 0.0,
+                "ci_lo": 0.02,
+                "ci_hi": 0.02,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 0.0,
+                "significant_p05": true
+              },
+              "CNN-only": {
+                "mean": 0.04,
+                "std": 0.0,
+                "ci_lo": 0.04,
+                "ci_hi": 0.04,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 0.0,
+                "significant_p05": true
+              },
+              "GBM-only": {
+                "mean": 0.05,
+                "std": 0.0,
+                "ci_lo": 0.05,
+                "ci_hi": 0.05,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 0.0,
+                "significant_p05": true
+              },
+              "Random Forest (baseline)": {
+                "mean": 0.07,
+                "std": 0.0,
+                "ci_lo": 0.07,
+                "ci_hi": 0.07,
+                "n": 10
+              },
+              "Signature-based (ClamAV)": {
+                "mean": 0.01,
+                "std": 0.0,
+                "ci_lo": 0.01,
+                "ci_hi": 0.01,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 0.0,
+                "significant_p05": true
+              },
+              "Heuristic-only": {
+                "mean": 0.12,
+                "std": 0.0,
+                "ci_lo": 0.12,
+                "ci_hi": 0.12,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 0.0,
+                "significant_p05": true
+              }
+            }
+          }
+        }
+      },
+      "raw_runs": [
+        {
+          "method": "OLYMPUS-CNN+GBM",
+          "seed": 42,
+          "duration_s": 0.002550840377807617,
+          "accuracy": 0.979,
+          "precision": 0.9900596401788079,
+          "recall": 0.9688715934457751,
+          "f1": 0.9793505305811665,
+          "fpr": 0.02
+        },
+        {
+          "method": "CNN-only",
+          "seed": 42,
+          "duration_s": 0.002550840377807617,
+          "accuracy": 0.952,
+          "precision": 0.9586614154357059,
+          "recall": 0.9474708152772942,
+          "f1": 0.9530327662542213,
+          "fpr": 0.04
+        },
+        {
+          "method": "GBM-only",
+          "seed": 42,
+          "duration_s": 0.002550840377807617,
+          "accuracy": 0.931,
+          "precision": 0.9513184564881979,
+          "recall": 0.912451360092507,
+          "f1": 0.9314791408701867,
+          "fpr": 0.05
+        },
+        {
+          "method": "Random Forest (baseline)",
+          "seed": 42,
+          "duration_s": 0.002550840377807617,
+          "accuracy": 0.917,
+          "precision": 0.9353535334639322,
+          "recall": 0.9007782083642447,
+          "f1": 0.9177398353257521,
+          "fpr": 0.07
+        },
+        {
+          "method": "Signature-based (ClamAV)",
+          "seed": 42,
+          "duration_s": 0.002550840377807617,
+          "accuracy": 0.864,
+          "precision": 0.9921874974161784,
+          "recall": 0.7412451347446593,
+          "f1": 0.8485518471190964,
+          "fpr": 0.01
+        },
+        {
+          "method": "Heuristic-only",
+          "seed": 42,
+          "duration_s": 0.002550840377807617,
+          "accuracy": 0.769,
+          "precision": 0.8694516948578285,
+          "recall": 0.6478599209185605,
+          "f1": 0.742474425397006,
+          "fpr": 0.12
+        },
+        {
+          "method": "OLYMPUS-CNN+GBM",
+          "seed": 43,
+          "duration_s": 0.0010273456573486328,
+          "accuracy": 0.97,
+          "precision": 0.9835728932575505,
+          "recall": 0.9560878224429384,
+          "f1": 0.9696351256681919,
+          "fpr": 0.02
+        },
+        {
+          "method": "CNN-only",
+          "seed": 43,
+          "duration_s": 0.0010273456573486328,
+          "accuracy": 0.946,
+          "precision": 0.9627329172614225,
+          "recall": 0.9281437107222681,
+          "f1": 0.9451214494661082,
+          "fpr": 0.04
+        },
+        {
+          "method": "GBM-only",
+          "seed": 43,
+          "duration_s": 0.0010273456573486328,
+          "accuracy": 0.932,
+          "precision": 0.9356136802100329,
+          "recall": 0.9281437107222681,
+          "f1": 0.9318632255957479,
+          "fpr": 0.05
+        },
+        {
+          "method": "Random Forest (baseline)",
+          "seed": 43,
+          "duration_s": 0.0010273456573486328,
+          "accuracy": 0.903,
+          "precision": 0.9410480328798078,
+          "recall": 0.8602794394006399,
+          "f1": 0.8988524709766265,
+          "fpr": 0.07
+        },
+        {
+          "method": "Signature-based (ClamAV)",
+          "seed": 43,
+          "duration_s": 0.0010273456573486328,
+          "accuracy": 0.86,
+          "precision": 0.991825610376497,
+          "recall": 0.7265469047374313,
+          "f1": 0.8387091874033931,
+          "fpr": 0.01
+        },
+        {
+          "method": "Heuristic-only",
+          "seed": 43,
+          "duration_s": 0.0010273456573486328,
+          "accuracy": 0.75,
+          "precision": 0.8293963232824244,
+          "recall": 0.6307385216951327,
+          "f1": 0.716552795612761,
+          "fpr": 0.12
+        },
+        {
+          "method": "OLYMPUS-CNN+GBM",
+          "seed": 44,
+          "duration_s": 0.002595663070678711,
+          "accuracy": 0.971,
+          "precision": 0.9697580625609716,
+          "recall": 0.9717171697541067,
+          "f1": 0.9707361277086645,
+          "fpr": 0.02
+        },
+        {
+          "method": "CNN-only",
+          "seed": 44,
+          "duration_s": 0.002595663070678711,
+          "accuracy": 0.945,
+          "precision": 0.9489795899000416,
+          "recall": 0.9393939374961738,
+          "f1": 0.9441619346442907,
+          "fpr": 0.04
+        },
+        {
+          "method": "GBM-only",
+          "seed": 44,
+          "duration_s": 0.002595663070678711,
+          "accuracy": 0.919,
+          "precision": 0.934873947615811,
+          "recall": 0.8989898971737578,
+          "f1": 0.9165803427940203,
+          "fpr": 0.05
+        },
+        {
+          "method": "Random Forest (baseline)",
+          "seed": 44,
+          "duration_s": 0.002595663070678711,
+          "accuracy": 0.876,
+          "precision": 0.8938428855757051,
+          "recall": 0.8505050487868585,
+          "f1": 0.8716351092703335,
+          "fpr": 0.07
+        },
+        {
+          "method": "Signature-based (ClamAV)",
+          "seed": 44,
+          "duration_s": 0.002595663070678711,
+          "accuracy": 0.86,
+          "precision": 0.9889807135289788,
+          "recall": 0.7252525237873686,
+          "f1": 0.8368293467137888,
+          "fpr": 0.01
+        },
+        {
+          "method": "Heuristic-only",
+          "seed": 44,
+          "duration_s": 0.002595663070678711,
+          "accuracy": 0.75,
+          "precision": 0.833787463668154,
+          "recall": 0.618181816932966,
+          "f1": 0.7099763075218293,
+          "fpr": 0.12
+        },
+        {
+          "method": "OLYMPUS-CNN+GBM",
+          "seed": 45,
+          "duration_s": 0.0023996829986572266,
+          "accuracy": 0.969,
+          "precision": 0.9809725137822991,
+          "recall": 0.9547325083235957,
+          "f1": 0.9676741591793648,
+          "fpr": 0.02
+        },
+        {
+          "method": "CNN-only",
+          "seed": 45,
+          "duration_s": 0.0023996829986572266,
+          "accuracy": 0.94,
+          "precision": 0.9570815430105546,
+          "recall": 0.9176954713627665,
+          "f1": 0.9369742881684752,
+          "fpr": 0.04
+        },
+        {
+          "method": "GBM-only",
+          "seed": 45,
+          "duration_s": 0.0023996829986572266,
+          "accuracy": 0.918,
+          "precision": 0.9410480328798078,
+          "recall": 0.886831273895409,
+          "f1": 0.913135091725891,
+          "fpr": 0.05
+        },
+        {
+          "method": "Random Forest (baseline)",
+          "seed": 45,
+          "duration_s": 0.0023996829986572266,
+          "accuracy": 0.897,
+          "precision": 0.9100642378799481,
+          "recall": 0.8744855949084659,
+          "f1": 0.8919197501635134,
+          "fpr": 0.07
+        },
+        {
+          "method": "Signature-based (ClamAV)",
+          "seed": 45,
+          "duration_s": 0.0023996829986572266,
+          "accuracy": 0.851,
+          "precision": 0.9693593287761578,
+          "recall": 0.7160493812426968,
+          "f1": 0.8236681483984553,
+          "fpr": 0.01
+        },
+        {
+          "method": "Heuristic-only",
+          "seed": 45,
+          "duration_s": 0.0023996829986572266,
+          "accuracy": 0.765,
+          "precision": 0.8438356141264778,
+          "recall": 0.6337448546630764,
+          "f1": 0.7238537974792083,
+          "fpr": 0.12
+        },
+        {
+          "method": "OLYMPUS-CNN+GBM",
+          "seed": 46,
+          "duration_s": 0.003026247024536133,
+          "accuracy": 0.978,
+          "precision": 0.9838383818508316,
+          "recall": 0.9720558862833216,
+          "f1": 0.977911144641068,
+          "fpr": 0.02
+        },
+        {
+          "method": "CNN-only",
+          "seed": 46,
+          "duration_s": 0.0040247440338134766,
+          "accuracy": 0.945,
+          "precision": 0.9569672111537557,
+          "recall": 0.9321357266823638,
+          "f1": 0.9443877691576593,
+          "fpr": 0.04
+        },
+        {
+          "method": "GBM-only",
+          "seed": 46,
+          "duration_s": 0.0040247440338134766,
+          "accuracy": 0.937,
+          "precision": 0.9543568444930356,
+          "recall": 0.9181636708220287,
+          "f1": 0.9359099764110509,
+          "fpr": 0.05
+        },
+        {
+          "method": "Random Forest (baseline)",
+          "seed": 46,
+          "duration_s": 0.0040247440338134766,
+          "accuracy": 0.896,
+          "precision": 0.9178947349096953,
+          "recall": 0.8702594793008793,
+          "f1": 0.8934421214751015,
+          "fpr": 0.07
+        },
+        {
+          "method": "Signature-based (ClamAV)",
+          "seed": 46,
+          "duration_s": 0.0040247440338134766,
+          "accuracy": 0.871,
+          "precision": 0.994680848418402,
+          "recall": 0.7465069845379102,
+          "f1": 0.8529071478935475,
+          "fpr": 0.01
+        },
+        {
+          "method": "Heuristic-only",
+          "seed": 46,
+          "duration_s": 0.0040247440338134766,
+          "accuracy": 0.764,
+          "precision": 0.8320801984158391,
+          "recall": 0.6626746493758989,
+          "f1": 0.737777282560824,
+          "fpr": 0.12
+        },
+        {
+          "method": "OLYMPUS-CNN+GBM",
+          "seed": 47,
+          "duration_s": 0.0019986629486083984,
+          "accuracy": 0.978,
+          "precision": 0.9804305264570832,
+          "recall": 0.9766081852307833,
+          "f1": 0.9785151230909996,
+          "fpr": 0.02
+        },
+        {
+          "method": "CNN-only",
+          "seed": 47,
+          "duration_s": 0.0019986629486083984,
+          "accuracy": 0.934,
+          "precision": 0.9608247402869593,
+          "recall": 0.9083820645060778,
+          "f1": 0.9338672339933034,
+          "fpr": 0.04
+        },
+        {
+          "method": "GBM-only",
+          "seed": 47,
+          "duration_s": 0.0019986629486083984,
+          "accuracy": 0.918,
+          "precision": 0.9461697702977852,
+          "recall": 0.8908382048911536,
+          "f1": 0.9176701813421051,
+          "fpr": 0.05
+        },
+        {
+          "method": "Random Forest (baseline)",
+          "seed": 47,
+          "duration_s": 0.0019986629486083984,
+          "accuracy": 0.905,
+          "precision": 0.9300411503497096,
+          "recall": 0.8810916162161957,
+          "f1": 0.9049044034587895,
+          "fpr": 0.07
+        },
+        {
+          "method": "Signature-based (ClamAV)",
+          "seed": 47,
+          "duration_s": 0.0019986629486083984,
+          "accuracy": 0.866,
+          "precision": 0.984654728939502,
+          "recall": 0.7504873279717595,
+          "f1": 0.8517694187267884,
+          "fpr": 0.01
+        },
+        {
+          "method": "Heuristic-only",
+          "seed": 47,
+          "duration_s": 0.0019986629486083984,
+          "accuracy": 0.78,
+          "precision": 0.8746803046683368,
+          "recall": 0.6666666653671215,
+          "f1": 0.7566366755744628,
+          "fpr": 0.12
+        },
+        {
+          "method": "OLYMPUS-CNN+GBM",
+          "seed": 48,
+          "duration_s": 0.002002239227294922,
+          "accuracy": 0.974,
+          "precision": 0.9794238662974818,
+          "recall": 0.9674796728303259,
+          "f1": 0.9734146309527872,
+          "fpr": 0.02
+        },
+        {
+          "method": "CNN-only",
+          "seed": 48,
+          "duration_s": 0.002002239227294922,
+          "accuracy": 0.943,
+          "precision": 0.9503105570386945,
+          "recall": 0.9329268273721,
+          "f1": 0.9415379596499697,
+          "fpr": 0.04
+        },
+        {
+          "method": "GBM-only",
+          "seed": 48,
+          "duration_s": 0.002002239227294922,
+          "accuracy": 0.944,
+          "precision": 0.9579831912647412,
+          "recall": 0.9268292664088836,
+          "f1": 0.9421482585208582,
+          "fpr": 0.05
+        },
+        {
+          "method": "Random Forest (baseline)",
+          "seed": 48,
+          "duration_s": 0.002002239227294922,
+          "accuracy": 0.913,
+          "precision": 0.9107505052520274,
+          "recall": 0.9126016241613788,
+          "f1": 0.9116746250532259,
+          "fpr": 0.07
+        },
+        {
+          "method": "Signature-based (ClamAV)",
+          "seed": 48,
+          "duration_s": 0.002002239227294922,
+          "accuracy": 0.864,
+          "precision": 0.9863387951192929,
+          "recall": 0.7337398359070328,
+          "f1": 0.8414913503135297,
+          "fpr": 0.01
+        },
+        {
+          "method": "Heuristic-only",
+          "seed": 48,
+          "duration_s": 0.002002239227294922,
+          "accuracy": 0.799,
+          "precision": 0.8818897614648563,
+          "recall": 0.6829268278802301,
+          "f1": 0.7697589564919319,
+          "fpr": 0.12
+        },
+        {
+          "method": "OLYMPUS-CNN+GBM",
+          "seed": 49,
+          "duration_s": 0.0023605823516845703,
+          "accuracy": 0.978,
+          "precision": 0.9814814794619723,
+          "recall": 0.9734693857684298,
+          "f1": 0.9774585143991069,
+          "fpr": 0.02
+        },
+        {
+          "method": "CNN-only",
+          "seed": 49,
+          "duration_s": 0.0023605823516845703,
+          "accuracy": 0.954,
+          "precision": 0.968354428336805,
+          "recall": 0.9367346919658476,
+          "f1": 0.9522816558386605,
+          "fpr": 0.04
+        },
+        {
+          "method": "GBM-only",
+          "seed": 49,
+          "duration_s": 0.0023605823516845703,
+          "accuracy": 0.92,
+          "precision": 0.932489449509516,
+          "recall": 0.902040814485631,
+          "f1": 0.9170119463682758,
+          "fpr": 0.05
+        },
+        {
+          "method": "Random Forest (baseline)",
+          "seed": 49,
+          "duration_s": 0.0023605823516845703,
+          "accuracy": 0.911,
+          "precision": 0.9275053285127818,
+          "recall": 0.8877551002290712,
+          "f1": 0.9071944931343077,
+          "fpr": 0.07
+        },
+        {
+          "method": "Signature-based (ClamAV)",
+          "seed": 49,
+          "duration_s": 0.0023605823516845703,
+          "accuracy": 0.839,
+          "precision": 0.979591833878741,
+          "recall": 0.6857142843148688,
+          "f1": 0.8067222027099462,
+          "fpr": 0.01
+        },
+        {
+          "method": "Heuristic-only",
+          "seed": 49,
+          "duration_s": 0.0023605823516845703,
+          "accuracy": 0.783,
+          "precision": 0.8659517403057594,
+          "recall": 0.659183672124115,
+          "f1": 0.7485510717661983,
+          "fpr": 0.12
+        },
+        {
+          "method": "OLYMPUS-CNN+GBM",
+          "seed": 50,
+          "duration_s": 0.002194643020629883,
+          "accuracy": 0.976,
+          "precision": 0.9863281230735779,
+          "recall": 0.9674329483382511,
+          "f1": 0.9767886664362111,
+          "fpr": 0.02
+        },
+        {
+          "method": "CNN-only",
+          "seed": 50,
+          "duration_s": 0.002194643020629883,
+          "accuracy": 0.946,
+          "precision": 0.9661354562427581,
+          "recall": 0.9291187721664391,
+          "f1": 0.9472651233408704,
+          "fpr": 0.04
+        },
+        {
+          "method": "GBM-only",
+          "seed": 50,
+          "duration_s": 0.002194643020629883,
+          "accuracy": 0.923,
+          "precision": 0.9388560139273057,
+          "recall": 0.9118773928891237,
+          "f1": 0.9251695663355367,
+          "fpr": 0.05
+        },
+        {
+          "method": "Random Forest (baseline)",
+          "seed": 50,
+          "duration_s": 0.002194643020629883,
+          "accuracy": 0.917,
+          "precision": 0.9452332638027723,
+          "recall": 0.8927203048032178,
+          "f1": 0.9182260995843434,
+          "fpr": 0.07
+        },
+        {
+          "method": "Signature-based (ClamAV)",
+          "seed": 50,
+          "duration_s": 0.002194643020629883,
+          "accuracy": 0.863,
+          "precision": 0.9948586092677156,
+          "recall": 0.7413793089245607,
+          "f1": 0.8496153155977905,
+          "fpr": 0.01
+        },
+        {
+          "method": "Heuristic-only",
+          "seed": 50,
+          "duration_s": 0.002194643020629883,
+          "accuracy": 0.757,
+          "precision": 0.8531645548021151,
+          "recall": 0.6455938684950309,
+          "f1": 0.7350049605504118,
+          "fpr": 0.12
+        },
+        {
+          "method": "OLYMPUS-CNN+GBM",
+          "seed": 51,
+          "duration_s": 0.0021703243255615234,
+          "accuracy": 0.98,
+          "precision": 0.9883268463262124,
+          "recall": 0.9731800747640228,
+          "f1": 0.9806944788318167,
+          "fpr": 0.02
+        },
+        {
+          "method": "CNN-only",
+          "seed": 51,
+          "duration_s": 0.0021703243255615234,
+          "accuracy": 0.945,
+          "precision": 0.9587426307293858,
+          "recall": 0.9348658985922109,
+          "f1": 0.9466532324819825,
+          "fpr": 0.04
+        },
+        {
+          "method": "GBM-only",
+          "seed": 51,
+          "duration_s": 0.0021703243255615234,
+          "accuracy": 0.937,
+          "precision": 0.9617706218073026,
+          "recall": 0.9157088105063049,
+          "f1": 0.9381741795197204,
+          "fpr": 0.05
+        },
+        {
+          "method": "Random Forest (baseline)",
+          "seed": 51,
+          "duration_s": 0.0021703243255615234,
+          "accuracy": 0.91,
+          "precision": 0.9426229488880677,
+          "recall": 0.8812260519516742,
+          "f1": 0.9108905878720511,
+          "fpr": 0.07
+        },
+        {
+          "method": "Signature-based (ClamAV)",
+          "seed": 51,
+          "duration_s": 0.0021703243255615234,
+          "accuracy": 0.864,
+          "precision": 0.9898477132237368,
+          "recall": 0.7471264353503325,
+          "f1": 0.851527892183879,
+          "fpr": 0.01
+        },
+        {
+          "method": "Heuristic-only",
+          "seed": 51,
+          "duration_s": 0.0021703243255615234,
+          "accuracy": 0.74,
+          "precision": 0.8429319349661468,
+          "recall": 0.616858236366172,
+          "f1": 0.7123888909471586,
+          "fpr": 0.12
+        }
+      ]
     },
-    {
-      "method": "CNN-only",
-      "seed": 42,
-      "duration_s": 0.0010666847229003906,
-      "accuracy": 0.952,
-      "precision": 0.9586614154357059,
-      "recall": 0.9474708152772942,
-      "f1": 0.9530327662542213,
-      "fpr": 0.04
+    "module7_social_engineering": {
+      "experiment_metadata": {
+        "title": "Module 7 Social-Engineering Detection Calibration",
+        "module": "Module 7 / Social Engineering",
+        "evidence_type": "synthetic adversarial-email calibration",
+        "scenario": "Seeded phishing-style detection simulation used to compare the OLYMPUS social-engineering detector with simpler reference filters.",
+        "primary_metric": "f1",
+        "reference_method": "SpamAssassin (baseline)",
+        "null_anchor": null,
+        "metric_directions": {
+          "accuracy": "higher",
+          "precision": "higher",
+          "recall": "higher",
+          "f1": "higher"
+        },
+        "metric_notes": {
+          "accuracy": "Synthetic blended correctness across the seeded phishing toy task.",
+          "precision": "Synthetic precision under the seeded phishing toy task.",
+          "recall": "Synthetic phishing recall under the seeded phishing toy task.",
+          "f1": "Synthetic harmonic mean of precision and recall under the seeded phishing toy task."
+        },
+        "claims_supported": [
+          "relative calibration of the social-engineering detector",
+          "repeatable synthetic comparison under shared seeds",
+          "artifact persistence for future regression tracking"
+        ],
+        "not_claimed": [
+          "production email-security accuracy on live traffic",
+          "enterprise deployment readiness",
+          "real phishing-corpus superiority"
+        ]
+      },
+      "summary": {
+        "primary_metric": "f1",
+        "seed_count": 10,
+        "method_count": 5,
+        "recommended_reading": "Read the primary metric first, then inspect the raw seed-level rows before making any claims beyond synthetic calibration.",
+        "primary_ordering": [
+          "OLYMPUS-SE-Detector",
+          "URL-only classifier",
+          "Header-only",
+          "SpamAssassin (baseline)",
+          "Keyword matching"
+        ],
+        "metric_summaries": {
+          "accuracy": {
+            "direction": "higher",
+            "interpretation": "Synthetic blended correctness across the seeded phishing toy task.",
+            "reference_method": "SpamAssassin (baseline)",
+            "ordering": [
+              "OLYMPUS-SE-Detector",
+              "URL-only classifier",
+              "Header-only",
+              "SpamAssassin (baseline)",
+              "Keyword matching"
+            ],
+            "methods": {
+              "OLYMPUS-SE-Detector": {
+                "mean": 0.9624,
+                "std": 0.006,
+                "ci_lo": 0.9591,
+                "ci_hi": 0.966,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -26.751,
+                "significant_p05": true
+              },
+              "URL-only classifier": {
+                "mean": 0.8592,
+                "std": 0.0056,
+                "ci_lo": 0.8561,
+                "ci_hi": 0.8624,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -11.4537,
+                "significant_p05": true
+              },
+              "Header-only": {
+                "mean": 0.8194,
+                "std": 0.0065,
+                "ci_lo": 0.815,
+                "ci_hi": 0.8226,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -4.8916,
+                "significant_p05": true
+              },
+              "SpamAssassin (baseline)": {
+                "mean": 0.786,
+                "std": 0.0071,
+                "ci_lo": 0.7817,
+                "ci_hi": 0.79,
+                "n": 10
+              },
+              "Keyword matching": {
+                "mean": 0.6787,
+                "std": 0.0062,
+                "ci_lo": 0.6753,
+                "ci_hi": 0.6826,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 16.0231,
+                "significant_p05": true
+              }
+            }
+          },
+          "precision": {
+            "direction": "higher",
+            "interpretation": "Synthetic precision under the seeded phishing toy task.",
+            "reference_method": "SpamAssassin (baseline)",
+            "ordering": [
+              "OLYMPUS-SE-Detector",
+              "SpamAssassin (baseline)",
+              "URL-only classifier",
+              "Header-only",
+              "Keyword matching"
+            ],
+            "methods": {
+              "OLYMPUS-SE-Detector": {
+                "mean": 0.9679,
+                "std": 0.003,
+                "ci_lo": 0.9661,
+                "ci_hi": 0.9696,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -6.5771,
+                "significant_p05": true
+              },
+              "URL-only classifier": {
+                "mean": 0.9415,
+                "std": 0.0044,
+                "ci_lo": 0.9391,
+                "ci_hi": 0.944,
+                "n": 10,
+                "wilcoxon_W": 2,
+                "p_value": 0.0093,
+                "cohens_d": 1.4346,
+                "significant_p05": true
+              },
+              "Header-only": {
+                "mean": 0.9067,
+                "std": 0.005,
+                "ci_lo": 0.9038,
+                "ci_hi": 0.9098,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 9.4812,
+                "significant_p05": true
+              },
+              "SpamAssassin (baseline)": {
+                "mean": 0.9471,
+                "std": 0.0033,
+                "ci_lo": 0.9452,
+                "ci_hi": 0.949,
+                "n": 10
+              },
+              "Keyword matching": {
+                "mean": 0.7999,
+                "std": 0.005,
+                "ci_lo": 0.797,
+                "ci_hi": 0.8029,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 34.5948,
+                "significant_p05": true
+              }
+            }
+          },
+          "recall": {
+            "direction": "higher",
+            "interpretation": "Synthetic phishing recall under the seeded phishing toy task.",
+            "reference_method": "SpamAssassin (baseline)",
+            "ordering": [
+              "OLYMPUS-SE-Detector",
+              "URL-only classifier",
+              "Header-only",
+              "SpamAssassin (baseline)",
+              "Keyword matching"
+            ],
+            "methods": {
+              "OLYMPUS-SE-Detector": {
+                "mean": 0.96,
+                "std": 0.0083,
+                "ci_lo": 0.9554,
+                "ci_hi": 0.9649,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -25.8793,
+                "significant_p05": true
+              },
+              "URL-only classifier": {
+                "mean": 0.8208,
+                "std": 0.0092,
+                "ci_lo": 0.8154,
+                "ci_hi": 0.8261,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -10.8959,
+                "significant_p05": true
+              },
+              "Header-only": {
+                "mean": 0.7762,
+                "std": 0.0092,
+                "ci_lo": 0.7702,
+                "ci_hi": 0.7809,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -6.4657,
+                "significant_p05": true
+              },
+              "SpamAssassin (baseline)": {
+                "mean": 0.7114,
+                "std": 0.0108,
+                "ci_lo": 0.7048,
+                "ci_hi": 0.7173,
+                "n": 10
+              },
+              "Keyword matching": {
+                "mean": 0.606,
+                "std": 0.0082,
+                "ci_lo": 0.6015,
+                "ci_hi": 0.6111,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 10.9983,
+                "significant_p05": true
+              }
+            }
+          },
+          "f1": {
+            "direction": "higher",
+            "interpretation": "Synthetic harmonic mean of precision and recall under the seeded phishing toy task.",
+            "reference_method": "SpamAssassin (baseline)",
+            "ordering": [
+              "OLYMPUS-SE-Detector",
+              "URL-only classifier",
+              "Header-only",
+              "SpamAssassin (baseline)",
+              "Keyword matching"
+            ],
+            "methods": {
+              "OLYMPUS-SE-Detector": {
+                "mean": 0.9639,
+                "std": 0.0048,
+                "ci_lo": 0.9613,
+                "ci_hi": 0.9668,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -25.9571,
+                "significant_p05": true
+              },
+              "URL-only classifier": {
+                "mean": 0.877,
+                "std": 0.0043,
+                "ci_lo": 0.8745,
+                "ci_hi": 0.8794,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -11.4545,
+                "significant_p05": true
+              },
+              "Header-only": {
+                "mean": 0.8364,
+                "std": 0.006,
+                "ci_lo": 0.8323,
+                "ci_hi": 0.8394,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -3.7427,
+                "significant_p05": true
+              },
+              "SpamAssassin (baseline)": {
+                "mean": 0.8124,
+                "std": 0.0067,
+                "ci_lo": 0.8083,
+                "ci_hi": 0.8161,
+                "n": 10
+              },
+              "Keyword matching": {
+                "mean": 0.6896,
+                "std": 0.0068,
+                "ci_lo": 0.6858,
+                "ci_hi": 0.6938,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 18.1857,
+                "significant_p05": true
+              }
+            }
+          }
+        }
+      },
+      "raw_runs": [
+        {
+          "method": "OLYMPUS-SE-Detector",
+          "seed": 42,
+          "accuracy": 0.9622507230934517,
+          "precision": 0.9705015268620643,
+          "recall": 0.9585590967042207,
+          "f1": 0.9644928451991482
+        },
+        {
+          "method": "URL-only classifier",
+          "seed": 42,
+          "accuracy": 0.857167813381378,
+          "precision": 0.938663322609208,
+          "recall": 0.8188868413843233,
+          "f1": 0.8746932198869375
+        },
+        {
+          "method": "Header-only",
+          "seed": 42,
+          "accuracy": 0.8233529121350311,
+          "precision": 0.9148143195072576,
+          "recall": 0.7787241171621712,
+          "f1": 0.841300719546995
+        },
+        {
+          "method": "SpamAssassin (baseline)",
+          "seed": 42,
+          "accuracy": 0.7877272346262196,
+          "precision": 0.9485850971916436,
+          "recall": 0.7133231834406771,
+          "f1": 0.8143016579529267
+        },
+        {
+          "method": "Keyword matching",
+          "seed": 42,
+          "accuracy": 0.6733074620309323,
+          "precision": 0.7988008488523068,
+          "recall": 0.597830413158548,
+          "f1": 0.6838556640718096
+        },
+        {
+          "method": "OLYMPUS-SE-Detector",
+          "seed": 43,
+          "accuracy": 0.9729348453577374,
+          "precision": 0.9683649243540471,
+          "recall": 0.9749860845104087,
+          "f1": 0.9716637250138271
+        },
+        {
+          "method": "URL-only classifier",
+          "seed": 43,
+          "accuracy": 0.8625082846935183,
+          "precision": 0.9382939902801438,
+          "recall": 0.8268887864337758,
+          "f1": 0.8790753565446985
+        },
+        {
+          "method": "Header-only",
+          "seed": 43,
+          "accuracy": 0.8184740729876218,
+          "precision": 0.9144573090386425,
+          "recall": 0.7716116296710018,
+          "f1": 0.8369829486810836
+        },
+        {
+          "method": "SpamAssassin (baseline)",
+          "seed": 43,
+          "accuracy": 0.7766209911293388,
+          "precision": 0.9436805724918021,
+          "recall": 0.6987595850988232,
+          "f1": 0.802958257898877
+        },
+        {
+          "method": "Keyword matching",
+          "seed": 43,
+          "accuracy": 0.682204188989707,
+          "precision": 0.802104476794582,
+          "recall": 0.6105655400553373,
+          "f1": 0.6933494737464653
+        },
+        {
+          "method": "OLYMPUS-SE-Detector",
+          "seed": 44,
+          "accuracy": 0.9546386527995504,
+          "precision": 0.9660228394028514,
+          "recall": 0.9495108166670053,
+          "f1": 0.9576951607258524
+        },
+        {
+          "method": "URL-only classifier",
+          "seed": 44,
+          "accuracy": 0.8625379289943543,
+          "precision": 0.9453645965136238,
+          "recall": 0.8240356616093533,
+          "f1": 0.8805398291358287
+        },
+        {
+          "method": "Header-only",
+          "seed": 44,
+          "accuracy": 0.8219043343566351,
+          "precision": 0.9057539601148589,
+          "recall": 0.7803777585787444,
+          "f1": 0.8384040442153322
+        },
+        {
+          "method": "SpamAssassin (baseline)",
+          "seed": 44,
+          "accuracy": 0.7855584583816337,
+          "precision": 0.9461763016705445,
+          "recall": 0.710988479782758,
+          "f1": 0.8118927603504459
+        },
+        {
+          "method": "Keyword matching",
+          "seed": 44,
+          "accuracy": 0.6781501329720105,
+          "precision": 0.7964913465473645,
+          "recall": 0.6066436216914171,
+          "f1": 0.6887235536009573
+        },
+        {
+          "method": "OLYMPUS-SE-Detector",
+          "seed": 45,
+          "accuracy": 0.9601708429567051,
+          "precision": 0.9640584548314592,
+          "recall": 0.9584145464229578,
+          "f1": 0.9612277160675466
+        },
+        {
+          "method": "URL-only classifier",
+          "seed": 45,
+          "accuracy": 0.8638711171948797,
+          "precision": 0.9406494765796479,
+          "recall": 0.8279177469706448,
+          "f1": 0.8806902498514695
+        },
+        {
+          "method": "Header-only",
+          "seed": 45,
+          "accuracy": 0.8228389003758307,
+          "precision": 0.9067770434097505,
+          "recall": 0.7813385780026076,
+          "f1": 0.8393968481518994
+        },
+        {
+          "method": "SpamAssassin (baseline)",
+          "seed": 45,
+          "accuracy": 0.7835267367919684,
+          "precision": 0.9435100996172313,
+          "recall": 0.7089435890276568,
+          "f1": 0.8095779459526559
+        },
+        {
+          "method": "Keyword matching",
+          "seed": 45,
+          "accuracy": 0.6683847862789349,
+          "precision": 0.7902147897579664,
+          "recall": 0.593827670077372,
+          "f1": 0.6780876772734884
+        },
+        {
+          "method": "OLYMPUS-SE-Detector",
+          "seed": 46,
+          "accuracy": 0.9693812972951452,
+          "precision": 0.9731144806682299,
+          "recall": 0.9677174569766104,
+          "f1": 0.9704079648628668
+        },
+        {
+          "method": "URL-only classifier",
+          "seed": 46,
+          "accuracy": 0.8487918630645372,
+          "precision": 0.9472103826418465,
+          "recall": 0.8031721439360022,
+          "f1": 0.8692643437661574
+        },
+        {
+          "method": "Header-only",
+          "seed": 46,
+          "accuracy": 0.8213432767287647,
+          "precision": 0.9009129245537224,
+          "recall": 0.7816188950885872,
+          "f1": 0.8370363495321395
+        },
+        {
+          "method": "SpamAssassin (baseline)",
+          "seed": 46,
+          "accuracy": 0.7721450330895802,
+          "precision": 0.9530935685744734,
+          "recall": 0.6890259162317056,
+          "f1": 0.7998270229472038
+        },
+        {
+          "method": "Keyword matching",
+          "seed": 46,
+          "accuracy": 0.6774781110882271,
+          "precision": 0.800579417035259,
+          "recall": 0.60370282083991,
+          "f1": 0.6883398438934007
+        },
+        {
+          "method": "OLYMPUS-SE-Detector",
+          "seed": 47,
+          "accuracy": 0.9572906049684182,
+          "precision": 0.9653273682948551,
+          "recall": 0.9536667814000143,
+          "f1": 0.9594611476381074
+        },
+        {
+          "method": "URL-only classifier",
+          "seed": 47,
+          "accuracy": 0.8524536147541312,
+          "precision": 0.9405046606741214,
+          "recall": 0.811212207161257,
+          "f1": 0.8710864639106404
+        },
+        {
+          "method": "Header-only",
+          "seed": 47,
+          "accuracy": 0.8151504758234335,
+          "precision": 0.9063033297681728,
+          "recall": 0.7700478764465214,
+          "f1": 0.8326376186544795
+        },
+        {
+          "method": "SpamAssassin (baseline)",
+          "seed": 47,
+          "accuracy": 0.791652853252514,
+          "precision": 0.9457264165016205,
+          "recall": 0.7200713478447731,
+          "f1": 0.8176143601474313
+        },
+        {
+          "method": "Keyword matching",
+          "seed": 47,
+          "accuracy": 0.6781155092238669,
+          "precision": 0.8008533038065623,
+          "recall": 0.6045982975074605,
+          "f1": 0.6890229433308198
+        },
+        {
+          "method": "OLYMPUS-SE-Detector",
+          "seed": 48,
+          "accuracy": 0.9596838390188697,
+          "precision": 0.9703214615749652,
+          "recall": 0.9549230086564783,
+          "f1": 0.9625601553444799
+        },
+        {
+          "method": "URL-only classifier",
+          "seed": 48,
+          "accuracy": 0.8588146915377766,
+          "precision": 0.9468876241305213,
+          "recall": 0.8179700706295671,
+          "f1": 0.8777198300213981
+        },
+        {
+          "method": "Header-only",
+          "seed": 48,
+          "accuracy": 0.8266116761436084,
+          "precision": 0.9089249961738372,
+          "recall": 0.7860582481118598,
+          "f1": 0.8430379132622293
+        },
+        {
+          "method": "SpamAssassin (baseline)",
+          "seed": 48,
+          "accuracy": 0.786217103182306,
+          "precision": 0.9504992561463248,
+          "recall": 0.7104527646015414,
+          "f1": 0.8131293490490288
+        },
+        {
+          "method": "Keyword matching",
+          "seed": 48,
+          "accuracy": 0.6895604638666475,
+          "precision": 0.8074196134299344,
+          "recall": 0.6198789932786599,
+          "f1": 0.7013278148104723
+        },
+        {
+          "method": "OLYMPUS-SE-Detector",
+          "seed": 49,
+          "accuracy": 0.9689674148234113,
+          "precision": 0.9679427338372278,
+          "recall": 0.9694276403491673,
+          "f1": 0.9686841180370066
+        },
+        {
+          "method": "URL-only classifier",
+          "seed": 49,
+          "accuracy": 0.8663816261138304,
+          "precision": 0.9376887901365326,
+          "recall": 0.8328352481035936,
+          "f1": 0.8821567154492883
+        },
+        {
+          "method": "Header-only",
+          "seed": 49,
+          "accuracy": 0.8198050097423272,
+          "precision": 0.9067507128103164,
+          "recall": 0.7768158374682914,
+          "f1": 0.8367686989811024
+        },
+        {
+          "method": "SpamAssassin (baseline)",
+          "seed": 49,
+          "accuracy": 0.7952935196244164,
+          "precision": 0.9449608546978343,
+          "recall": 0.7256765805575314,
+          "f1": 0.8209268353065616
+        },
+        {
+          "method": "Keyword matching",
+          "seed": 49,
+          "accuracy": 0.6794266888655487,
+          "precision": 0.7953946188091597,
+          "recall": 0.609199081091542,
+          "f1": 0.6899551463748983
+        },
+        {
+          "method": "OLYMPUS-SE-Detector",
+          "seed": 50,
+          "accuracy": 0.9574751872584489,
+          "precision": 0.9693941598458026,
+          "recall": 0.9521335037023365,
+          "f1": 0.9606858074947927
+        },
+        {
+          "method": "URL-only classifier",
+          "seed": 50,
+          "accuracy": 0.8564593830962949,
+          "precision": 0.9453015080445483,
+          "recall": 0.8151567716004048,
+          "f1": 0.8754180620888833
+        },
+        {
+          "method": "Header-only",
+          "seed": 50,
+          "accuracy": 0.8030282822092571,
+          "precision": 0.9016533934908421,
+          "recall": 0.7538512415666271,
+          "f1": 0.8211539915685498
+        },
+        {
+          "method": "SpamAssassin (baseline)",
+          "seed": 50,
+          "accuracy": 0.7895929122004057,
+          "precision": 0.9444174090419644,
+          "recall": 0.717516415816611,
+          "f1": 0.8154772187630942
+        },
+        {
+          "method": "Keyword matching",
+          "seed": 50,
+          "accuracy": 0.6742492142515196,
+          "precision": 0.8015208712354066,
+          "recall": 0.5981177922408807,
+          "f1": 0.6850390231834563
+        },
+        {
+          "method": "OLYMPUS-SE-Detector",
+          "seed": 51,
+          "accuracy": 0.9615663836788231,
+          "precision": 0.96396870871983,
+          "recall": 0.9604809447073215,
+          "f1": 0.9622211662020851
+        },
+        {
+          "method": "URL-only classifier",
+          "seed": 51,
+          "accuracy": 0.8634578354909261,
+          "precision": 0.9347784431362217,
+          "recall": 0.8297512997303897,
+          "f1": 0.8791386959823162
+        },
+        {
+          "method": "Header-only",
+          "seed": 51,
+          "accuracy": 0.8211460704486704,
+          "precision": 0.9005548910712118,
+          "recall": 0.7814783455813067,
+          "f1": 0.8368012149147127
+        },
+        {
+          "method": "SpamAssassin (baseline)",
+          "seed": 51,
+          "accuracy": 0.7919781756548472,
+          "precision": 0.9501113344858617,
+          "recall": 0.7190061397391496,
+          "f1": 0.8185588901929546
+        },
+        {
+          "method": "Keyword matching",
+          "seed": 51,
+          "accuracy": 0.6866084265646426,
+          "precision": 0.8058592722285688,
+          "recall": 0.615886675154276,
+          "f1": 0.6981804866593471
+        }
+      ]
     },
-    {
-      "method": "GBM-only",
-      "seed": 42,
-      "duration_s": 0.0010673999786376953,
-      "accuracy": 0.931,
-      "precision": 0.9513184564881979,
-      "recall": 0.912451360092507,
-      "f1": 0.9314791408701867,
-      "fpr": 0.05
+    "module9_llm_defense": {
+      "experiment_metadata": {
+        "title": "Module 9 LLM Defense Calibration",
+        "module": "Module 9 / LLM Defense",
+        "evidence_type": "synthetic adversarial prompt-defense calibration",
+        "scenario": "Seeded jailbreak-detection simulation used to compare the OLYMPUS LLM defense stack against lightweight filters and a null-defense anchor.",
+        "primary_metric": "f1",
+        "reference_method": "Pattern-matching only",
+        "null_anchor": "No defense (baseline)",
+        "metric_directions": {
+          "detection_rate": "higher",
+          "false_positive_rate": "lower",
+          "f1": "higher"
+        },
+        "metric_notes": {
+          "detection_rate": "Synthetic jailbreak-detection rate under a seeded adversarial prompt set.",
+          "false_positive_rate": "Injected false-positive-rate prior for the seeded prompt-defense task.",
+          "f1": "Synthetic balance between jailbreak detection and overblocking."
+        },
+        "claims_supported": [
+          "internal prompt-defense calibration under seeded adversarial prompts",
+          "relative comparison between OLYMPUS and lightweight defenses",
+          "artifact persistence for attacker/defender regression studies"
+        ],
+        "not_claimed": [
+          "real deployment safety across public jailbreak benchmarks",
+          "operational LLM-guardrail superiority",
+          "production moderation behavior on user traffic"
+        ]
+      },
+      "summary": {
+        "primary_metric": "f1",
+        "seed_count": 10,
+        "method_count": 5,
+        "recommended_reading": "Read the primary metric first, then inspect the raw seed-level rows before making any claims beyond synthetic calibration.",
+        "primary_ordering": [
+          "OLYMPUS-LLM-Defense",
+          "Pattern-matching only",
+          "Perplexity filter",
+          "Keyword blacklist",
+          "No defense (baseline)"
+        ],
+        "metric_summaries": {
+          "detection_rate": {
+            "direction": "higher",
+            "interpretation": "Synthetic jailbreak-detection rate under a seeded adversarial prompt set.",
+            "reference_method": "Pattern-matching only",
+            "ordering": [
+              "OLYMPUS-LLM-Defense",
+              "Pattern-matching only",
+              "Perplexity filter",
+              "Keyword blacklist",
+              "No defense (baseline)"
+            ],
+            "methods": {
+              "OLYMPUS-LLM-Defense": {
+                "mean": 0.94,
+                "std": 0.0083,
+                "ci_lo": 0.9354,
+                "ci_hi": 0.9449,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -21.5238,
+                "significant_p05": true
+              },
+              "Pattern-matching only": {
+                "mean": 0.7837,
+                "std": 0.0061,
+                "ci_lo": 0.7802,
+                "ci_hi": 0.7873,
+                "n": 10
+              },
+              "Perplexity filter": {
+                "mean": 0.7208,
+                "std": 0.0092,
+                "ci_lo": 0.7154,
+                "ci_hi": 0.7261,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 8.0344,
+                "significant_p05": true
+              },
+              "Keyword blacklist": {
+                "mean": 0.552,
+                "std": 0.0089,
+                "ci_lo": 0.547,
+                "ci_hi": 0.557,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 30.4557,
+                "significant_p05": true
+              },
+              "No defense (baseline)": {
+                "mean": 0.0,
+                "std": 0.0,
+                "ci_lo": 0.0,
+                "ci_hi": 0.0,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 182.0283,
+                "significant_p05": true
+              }
+            }
+          },
+          "false_positive_rate": {
+            "direction": "lower",
+            "interpretation": "Injected false-positive-rate prior for the seeded prompt-defense task.",
+            "reference_method": "Pattern-matching only",
+            "ordering": [
+              "No defense (baseline)",
+              "OLYMPUS-LLM-Defense",
+              "Pattern-matching only",
+              "Perplexity filter",
+              "Keyword blacklist"
+            ],
+            "methods": {
+              "OLYMPUS-LLM-Defense": {
+                "mean": 0.04,
+                "std": 0.0,
+                "ci_lo": 0.04,
+                "ci_hi": 0.04,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 0.0,
+                "significant_p05": true
+              },
+              "Pattern-matching only": {
+                "mean": 0.06,
+                "std": 0.0,
+                "ci_lo": 0.06,
+                "ci_hi": 0.06,
+                "n": 10
+              },
+              "Perplexity filter": {
+                "mean": 0.1,
+                "std": 0.0,
+                "ci_lo": 0.1,
+                "ci_hi": 0.1,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 0.0,
+                "significant_p05": true
+              },
+              "Keyword blacklist": {
+                "mean": 0.12,
+                "std": 0.0,
+                "ci_lo": 0.12,
+                "ci_hi": 0.12,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 0.0,
+                "significant_p05": true
+              },
+              "No defense (baseline)": {
+                "mean": 0.0,
+                "std": 0.0,
+                "ci_lo": 0.0,
+                "ci_hi": 0.0,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 0.0,
+                "significant_p05": true
+              }
+            }
+          },
+          "f1": {
+            "direction": "higher",
+            "interpretation": "Synthetic balance between jailbreak detection and overblocking.",
+            "reference_method": "Pattern-matching only",
+            "ordering": [
+              "OLYMPUS-LLM-Defense",
+              "Pattern-matching only",
+              "Perplexity filter",
+              "Keyword blacklist",
+              "No defense (baseline)"
+            ],
+            "methods": {
+              "OLYMPUS-LLM-Defense": {
+                "mean": 0.9499,
+                "std": 0.0042,
+                "ci_lo": 0.9475,
+                "ci_hi": 0.9524,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -24.2098,
+                "significant_p05": true
+              },
+              "Pattern-matching only": {
+                "mean": 0.8547,
+                "std": 0.0036,
+                "ci_lo": 0.8527,
+                "ci_hi": 0.8569,
+                "n": 10
+              },
+              "Perplexity filter": {
+                "mean": 0.8005,
+                "std": 0.0057,
+                "ci_lo": 0.7971,
+                "ci_hi": 0.8037,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 11.3409,
+                "significant_p05": true
+              },
+              "Keyword blacklist": {
+                "mean": 0.6784,
+                "std": 0.0067,
+                "ci_lo": 0.6746,
+                "ci_hi": 0.6822,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 32.7423,
+                "significant_p05": true
+              },
+              "No defense (baseline)": {
+                "mean": 0.0,
+                "std": 0.0,
+                "ci_lo": 0.0,
+                "ci_hi": 0.0,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 333.6213,
+                "significant_p05": true
+              }
+            }
+          }
+        }
+      },
+      "raw_runs": [
+        {
+          "method": "OLYMPUS-LLM-Defense",
+          "seed": 42,
+          "detection_rate": 0.9385590967042207,
+          "false_positive_rate": 0.04,
+          "f1": 0.9491579796711828
+        },
+        {
+          "method": "Pattern-matching only",
+          "seed": 42,
+          "detection_rate": 0.7782709639966848,
+          "false_positive_rate": 0.06,
+          "f1": 0.8515237651381423
+        },
+        {
+          "method": "Perplexity filter",
+          "seed": 42,
+          "detection_rate": 0.7188868413843233,
+          "false_positive_rate": 0.1,
+          "f1": 0.7993118988312841
+        },
+        {
+          "method": "Keyword blacklist",
+          "seed": 42,
+          "detection_rate": 0.5570198372509887,
+          "false_positive_rate": 0.12,
+          "f1": 0.6822134294427856
+        },
+        {
+          "method": "No defense (baseline)",
+          "seed": 42,
+          "detection_rate": 0.0,
+          "false_positive_rate": 0.0,
+          "f1": 0.0
+        },
+        {
+          "method": "OLYMPUS-LLM-Defense",
+          "seed": 43,
+          "detection_rate": 0.9549860845104087,
+          "false_positive_rate": 0.04,
+          "f1": 0.9574859784126228
+        },
+        {
+          "method": "Pattern-matching only",
+          "seed": 43,
+          "detection_rate": 0.7837027586636571,
+          "false_positive_rate": 0.06,
+          "f1": 0.8547647348810878
+        },
+        {
+          "method": "Perplexity filter",
+          "seed": 43,
+          "detection_rate": 0.7268887864337759,
+          "false_positive_rate": 0.1,
+          "f1": 0.8042338371604598
+        },
+        {
+          "method": "Keyword blacklist",
+          "seed": 43,
+          "detection_rate": 0.5587591054008318,
+          "false_positive_rate": 0.12,
+          "f1": 0.6835163289654108
+        },
+        {
+          "method": "No defense (baseline)",
+          "seed": 43,
+          "detection_rate": 0.0,
+          "false_positive_rate": 0.0,
+          "f1": 0.0
+        },
+        {
+          "method": "OLYMPUS-LLM-Defense",
+          "seed": 44,
+          "detection_rate": 0.9295108166670053,
+          "false_positive_rate": 0.04,
+          "f1": 0.9445089214359578
+        },
+        {
+          "method": "Pattern-matching only",
+          "seed": 44,
+          "detection_rate": 0.7867927924490216,
+          "false_positive_rate": 0.06,
+          "f1": 0.8565993555642392
+        },
+        {
+          "method": "Perplexity filter",
+          "seed": 44,
+          "detection_rate": 0.7240356616093533,
+          "false_positive_rate": 0.1,
+          "f1": 0.8024844646089178
+        },
+        {
+          "method": "Keyword blacklist",
+          "seed": 44,
+          "detection_rate": 0.5452468942146199,
+          "false_positive_rate": 0.12,
+          "f1": 0.6733106133417834
+        },
+        {
+          "method": "No defense (baseline)",
+          "seed": 44,
+          "detection_rate": 0.0,
+          "false_positive_rate": 0.0,
+          "f1": 0.0
+        },
+        {
+          "method": "OLYMPUS-LLM-Defense",
+          "seed": 45,
+          "detection_rate": 0.9384145464229577,
+          "false_positive_rate": 0.04,
+          "f1": 0.94908405724289
+        },
+        {
+          "method": "Pattern-matching only",
+          "seed": 45,
+          "detection_rate": 0.7914622635957681,
+          "false_positive_rate": 0.06,
+          "f1": 0.8593592984872156
+        },
+        {
+          "method": "Perplexity filter",
+          "seed": 45,
+          "detection_rate": 0.7279177469706448,
+          "false_positive_rate": 0.1,
+          "f1": 0.8048632322622842
+        },
+        {
+          "method": "Keyword blacklist",
+          "seed": 45,
+          "detection_rate": 0.5544753712304771,
+          "false_positive_rate": 0.12,
+          "f1": 0.680301657759998
+        },
+        {
+          "method": "No defense (baseline)",
+          "seed": 45,
+          "detection_rate": 0.0,
+          "false_positive_rate": 0.0,
+          "f1": 0.0
+        },
+        {
+          "method": "OLYMPUS-LLM-Defense",
+          "seed": 46,
+          "detection_rate": 0.9477174569766104,
+          "false_positive_rate": 0.04,
+          "f1": 0.9538186888849719
+        },
+        {
+          "method": "Pattern-matching only",
+          "seed": 46,
+          "detection_rate": 0.7734728172565473,
+          "false_positive_rate": 0.06,
+          "f1": 0.8486437795533537
+        },
+        {
+          "method": "Perplexity filter",
+          "seed": 46,
+          "detection_rate": 0.7031721439360022,
+          "false_positive_rate": 0.1,
+          "f1": 0.7895029079499916
+        },
+        {
+          "method": "Keyword blacklist",
+          "seed": 46,
+          "detection_rate": 0.5395242512710949,
+          "false_positive_rate": 0.12,
+          "f1": 0.6689297575980799
+        },
+        {
+          "method": "No defense (baseline)",
+          "seed": 46,
+          "detection_rate": 0.0,
+          "false_positive_rate": 0.0,
+          "f1": 0.0
+        },
+        {
+          "method": "OLYMPUS-LLM-Defense",
+          "seed": 47,
+          "detection_rate": 0.9336667814000142,
+          "false_positive_rate": 0.04,
+          "f1": 0.9466497967044168
+        },
+        {
+          "method": "Pattern-matching only",
+          "seed": 47,
+          "detection_rate": 0.7885076134106118,
+          "false_positive_rate": 0.06,
+          "f1": 0.8576146521404714
+        },
+        {
+          "method": "Perplexity filter",
+          "seed": 47,
+          "detection_rate": 0.711212207161257,
+          "false_positive_rate": 0.1,
+          "f1": 0.7945453570019902
+        },
+        {
+          "method": "Keyword blacklist",
+          "seed": 47,
+          "detection_rate": 0.5526328683916578,
+          "false_positive_rate": 0.12,
+          "f1": 0.6789130634341644
+        },
+        {
+          "method": "No defense (baseline)",
+          "seed": 47,
+          "detection_rate": 0.0,
+          "false_positive_rate": 0.0,
+          "f1": 0.0
+        },
+        {
+          "method": "OLYMPUS-LLM-Defense",
+          "seed": 48,
+          "detection_rate": 0.9349230086564783,
+          "false_positive_rate": 0.04,
+          "f1": 0.9472950727418087
+        },
+        {
+          "method": "Pattern-matching only",
+          "seed": 48,
+          "detection_rate": 0.7784151136044342,
+          "false_positive_rate": 0.06,
+          "f1": 0.851610039029932
+        },
+        {
+          "method": "Perplexity filter",
+          "seed": 48,
+          "detection_rate": 0.7179700706295671,
+          "false_positive_rate": 0.1,
+          "f1": 0.7987448914215489
+        },
+        {
+          "method": "Keyword blacklist",
+          "seed": 48,
+          "detection_rate": 0.5417623860194695,
+          "false_positive_rate": 0.12,
+          "f1": 0.6706473164031875
+        },
+        {
+          "method": "No defense (baseline)",
+          "seed": 48,
+          "detection_rate": 0.0,
+          "false_positive_rate": 0.0,
+          "f1": 0.0
+        },
+        {
+          "method": "OLYMPUS-LLM-Defense",
+          "seed": 49,
+          "detection_rate": 0.9494276403491673,
+          "false_positive_rate": 0.04,
+          "f1": 0.9546840510033707
+        },
+        {
+          "method": "Pattern-matching only",
+          "seed": 49,
+          "detection_rate": 0.7842128894733714,
+          "false_positive_rate": 0.06,
+          "f1": 0.8550680638933036
+        },
+        {
+          "method": "Perplexity filter",
+          "seed": 49,
+          "detection_rate": 0.7328352481035936,
+          "false_positive_rate": 0.1,
+          "f1": 0.8078602175316109
+        },
+        {
+          "method": "Keyword blacklist",
+          "seed": 49,
+          "detection_rate": 0.5606869837245677,
+          "false_positive_rate": 0.12,
+          "f1": 0.6849568418028108
+        },
+        {
+          "method": "No defense (baseline)",
+          "seed": 49,
+          "detection_rate": 0.0,
+          "false_positive_rate": 0.0,
+          "f1": 0.0
+        },
+        {
+          "method": "OLYMPUS-LLM-Defense",
+          "seed": 50,
+          "detection_rate": 0.9321335037023365,
+          "false_positive_rate": 0.04,
+          "f1": 0.9458610493104957
+        },
+        {
+          "method": "Pattern-matching only",
+          "seed": 50,
+          "detection_rate": 0.7801217688879104,
+          "false_positive_rate": 0.06,
+          "f1": 0.8526303773407249
+        },
+        {
+          "method": "Perplexity filter",
+          "seed": 50,
+          "detection_rate": 0.7151567716004048,
+          "false_positive_rate": 0.1,
+          "f1": 0.7970008945969438
+        },
+        {
+          "method": "Keyword blacklist",
+          "seed": 50,
+          "detection_rate": 0.5443357134932562,
+          "false_positive_rate": 0.12,
+          "f1": 0.6726154333258131
+        },
+        {
+          "method": "No defense (baseline)",
+          "seed": 50,
+          "detection_rate": 0.0,
+          "false_positive_rate": 0.0,
+          "f1": 0.0
+        },
+        {
+          "method": "OLYMPUS-LLM-Defense",
+          "seed": 51,
+          "detection_rate": 0.9404809447073215,
+          "false_positive_rate": 0.04,
+          "f1": 0.9501397363267994
+        },
+        {
+          "method": "Pattern-matching only",
+          "seed": 51,
+          "detection_rate": 0.7918018507753467,
+          "false_positive_rate": 0.06,
+          "f1": 0.8595594347192553
+        },
+        {
+          "method": "Perplexity filter",
+          "seed": 51,
+          "detection_rate": 0.7297512997303898,
+          "false_positive_rate": 0.1,
+          "f1": 0.8059828108430973
+        },
+        {
+          "method": "Keyword blacklist",
+          "seed": 51,
+          "detection_rate": 0.5657871621356445,
+          "false_positive_rate": 0.12,
+          "f1": 0.6887491760119345
+        },
+        {
+          "method": "No defense (baseline)",
+          "seed": 51,
+          "detection_rate": 0.0,
+          "false_positive_rate": 0.0,
+          "f1": 0.0
+        }
+      ]
     },
-    {
-      "method": "Random Forest (baseline)",
-      "seed": 42,
-      "duration_s": 0.0010676383972167969,
-      "accuracy": 0.917,
-      "precision": 0.9353535334639322,
-      "recall": 0.9007782083642447,
-      "f1": 0.9177398353257521,
-      "fpr": 0.07
-    },
-    {
-      "method": "Signature-based (ClamAV)",
-      "seed": 42,
-      "duration_s": 0.0010678768157958984,
-      "accuracy": 0.864,
-      "precision": 0.9921874974161784,
-      "recall": 0.7412451347446593,
-      "f1": 0.8485518471190964,
-      "fpr": 0.01
-    },
-    {
-      "method": "Heuristic-only",
-      "seed": 42,
-      "duration_s": 0.0010728836059570312,
-      "accuracy": 0.769,
-      "precision": 0.8694516948578285,
-      "recall": 0.6478599209185605,
-      "f1": 0.742474425397006,
-      "fpr": 0.12
-    },
-    {
-      "method": "OLYMPUS-CNN+GBM",
-      "seed": 43,
-      "duration_s": 0.001073598861694336,
-      "accuracy": 0.97,
-      "precision": 0.9835728932575505,
-      "recall": 0.9560878224429384,
-      "f1": 0.9696351256681919,
-      "fpr": 0.02
-    },
-    {
-      "method": "CNN-only",
-      "seed": 43,
-      "duration_s": 0.001074075698852539,
-      "accuracy": 0.946,
-      "precision": 0.9627329172614225,
-      "recall": 0.9281437107222681,
-      "f1": 0.9451214494661082,
-      "fpr": 0.04
-    },
-    {
-      "method": "GBM-only",
-      "seed": 43,
-      "duration_s": 0.0010743141174316406,
-      "accuracy": 0.932,
-      "precision": 0.9356136802100329,
-      "recall": 0.9281437107222681,
-      "f1": 0.9318632255957479,
-      "fpr": 0.05
-    },
-    {
-      "method": "Random Forest (baseline)",
-      "seed": 43,
-      "duration_s": 0.0010747909545898438,
-      "accuracy": 0.903,
-      "precision": 0.9410480328798078,
-      "recall": 0.8602794394006399,
-      "f1": 0.8988524709766265,
-      "fpr": 0.07
-    },
-    {
-      "method": "Signature-based (ClamAV)",
-      "seed": 43,
-      "duration_s": 0.0010750293731689453,
-      "accuracy": 0.86,
-      "precision": 0.991825610376497,
-      "recall": 0.7265469047374313,
-      "f1": 0.8387091874033931,
-      "fpr": 0.01
-    },
-    {
-      "method": "Heuristic-only",
-      "seed": 43,
-      "duration_s": 0.0010752677917480469,
-      "accuracy": 0.75,
-      "precision": 0.8293963232824244,
-      "recall": 0.6307385216951327,
-      "f1": 0.716552795612761,
-      "fpr": 0.12
-    },
-    {
-      "method": "OLYMPUS-CNN+GBM",
-      "seed": 44,
-      "duration_s": 0.001088857650756836,
-      "accuracy": 0.971,
-      "precision": 0.9697580625609716,
-      "recall": 0.9717171697541067,
-      "f1": 0.9707361277086645,
-      "fpr": 0.02
-    },
-    {
-      "method": "CNN-only",
-      "seed": 44,
-      "duration_s": 0.0010895729064941406,
-      "accuracy": 0.945,
-      "precision": 0.9489795899000416,
-      "recall": 0.9393939374961738,
-      "f1": 0.9441619346442907,
-      "fpr": 0.04
-    },
-    {
-      "method": "GBM-only",
-      "seed": 44,
-      "duration_s": 0.0010898113250732422,
-      "accuracy": 0.919,
-      "precision": 0.934873947615811,
-      "recall": 0.8989898971737578,
-      "f1": 0.9165803427940203,
-      "fpr": 0.05
-    },
-    {
-      "method": "Random Forest (baseline)",
-      "seed": 44,
-      "duration_s": 0.0010900497436523438,
-      "accuracy": 0.876,
-      "precision": 0.8938428855757051,
-      "recall": 0.8505050487868585,
-      "f1": 0.8716351092703335,
-      "fpr": 0.07
-    },
-    {
-      "method": "Signature-based (ClamAV)",
-      "seed": 44,
-      "duration_s": 0.0010902881622314453,
-      "accuracy": 0.86,
-      "precision": 0.9889807135289788,
-      "recall": 0.7252525237873686,
-      "f1": 0.8368293467137888,
-      "fpr": 0.01
-    },
-    {
-      "method": "Heuristic-only",
-      "seed": 44,
-      "duration_s": 0.0010945796966552734,
-      "accuracy": 0.75,
-      "precision": 0.833787463668154,
-      "recall": 0.618181816932966,
-      "f1": 0.7099763075218293,
-      "fpr": 0.12
-    },
-    {
-      "method": "OLYMPUS-CNN+GBM",
-      "seed": 45,
-      "duration_s": 0.001071929931640625,
-      "accuracy": 0.969,
-      "precision": 0.9809725137822991,
-      "recall": 0.9547325083235957,
-      "f1": 0.9676741591793648,
-      "fpr": 0.02
-    },
-    {
-      "method": "CNN-only",
-      "seed": 45,
-      "duration_s": 0.0010721683502197266,
-      "accuracy": 0.94,
-      "precision": 0.9570815430105546,
-      "recall": 0.9176954713627665,
-      "f1": 0.9369742881684752,
-      "fpr": 0.04
-    },
-    {
-      "method": "GBM-only",
-      "seed": 45,
-      "duration_s": 0.0010724067687988281,
-      "accuracy": 0.918,
-      "precision": 0.9410480328798078,
-      "recall": 0.886831273895409,
-      "f1": 0.913135091725891,
-      "fpr": 0.05
-    },
-    {
-      "method": "Random Forest (baseline)",
-      "seed": 45,
-      "duration_s": 0.0010728836059570312,
-      "accuracy": 0.897,
-      "precision": 0.9100642378799481,
-      "recall": 0.8744855949084659,
-      "f1": 0.8919197501635134,
-      "fpr": 0.07
-    },
-    {
-      "method": "Signature-based (ClamAV)",
-      "seed": 45,
-      "duration_s": 0.0010731220245361328,
-      "accuracy": 0.851,
-      "precision": 0.9693593287761578,
-      "recall": 0.7160493812426968,
-      "f1": 0.8236681483984553,
-      "fpr": 0.01
-    },
-    {
-      "method": "Heuristic-only",
-      "seed": 45,
-      "duration_s": 0.0010733604431152344,
-      "accuracy": 0.765,
-      "precision": 0.8438356141264778,
-      "recall": 0.6337448546630764,
-      "f1": 0.7238537974792083,
-      "fpr": 0.12
-    },
-    {
-      "method": "OLYMPUS-CNN+GBM",
-      "seed": 46,
-      "duration_s": 0.0010728836059570312,
-      "accuracy": 0.978,
-      "precision": 0.9838383818508316,
-      "recall": 0.9720558862833216,
-      "f1": 0.977911144641068,
-      "fpr": 0.02
-    },
-    {
-      "method": "CNN-only",
-      "seed": 46,
-      "duration_s": 0.0010733604431152344,
-      "accuracy": 0.945,
-      "precision": 0.9569672111537557,
-      "recall": 0.9321357266823638,
-      "f1": 0.9443877691576593,
-      "fpr": 0.04
-    },
-    {
-      "method": "GBM-only",
-      "seed": 46,
-      "duration_s": 0.001073598861694336,
-      "accuracy": 0.937,
-      "precision": 0.9543568444930356,
-      "recall": 0.9181636708220287,
-      "f1": 0.9359099764110509,
-      "fpr": 0.05
-    },
-    {
-      "method": "Random Forest (baseline)",
-      "seed": 46,
-      "duration_s": 0.0010738372802734375,
-      "accuracy": 0.896,
-      "precision": 0.9178947349096953,
-      "recall": 0.8702594793008793,
-      "f1": 0.8934421214751015,
-      "fpr": 0.07
-    },
-    {
-      "method": "Signature-based (ClamAV)",
-      "seed": 46,
-      "duration_s": 0.0010738372802734375,
-      "accuracy": 0.871,
-      "precision": 0.994680848418402,
-      "recall": 0.7465069845379102,
-      "f1": 0.8529071478935475,
-      "fpr": 0.01
-    },
-    {
-      "method": "Heuristic-only",
-      "seed": 46,
-      "duration_s": 0.001074075698852539,
-      "accuracy": 0.764,
-      "precision": 0.8320801984158391,
-      "recall": 0.6626746493758989,
-      "f1": 0.737777282560824,
-      "fpr": 0.12
-    },
-    {
-      "method": "OLYMPUS-CNN+GBM",
-      "seed": 47,
-      "duration_s": 0.0010759830474853516,
-      "accuracy": 0.978,
-      "precision": 0.9804305264570832,
-      "recall": 0.9766081852307833,
-      "f1": 0.9785151230909996,
-      "fpr": 0.02
-    },
-    {
-      "method": "CNN-only",
-      "seed": 47,
-      "duration_s": 0.0010762214660644531,
-      "accuracy": 0.934,
-      "precision": 0.9608247402869593,
-      "recall": 0.9083820645060778,
-      "f1": 0.9338672339933034,
-      "fpr": 0.04
-    },
-    {
-      "method": "GBM-only",
-      "seed": 47,
-      "duration_s": 0.0010764598846435547,
-      "accuracy": 0.918,
-      "precision": 0.9461697702977852,
-      "recall": 0.8908382048911536,
-      "f1": 0.9176701813421051,
-      "fpr": 0.05
-    },
-    {
-      "method": "Random Forest (baseline)",
-      "seed": 47,
-      "duration_s": 0.0010766983032226562,
-      "accuracy": 0.905,
-      "precision": 0.9300411503497096,
-      "recall": 0.8810916162161957,
-      "f1": 0.9049044034587895,
-      "fpr": 0.07
-    },
-    {
-      "method": "Signature-based (ClamAV)",
-      "seed": 47,
-      "duration_s": 0.0010771751403808594,
-      "accuracy": 0.866,
-      "precision": 0.984654728939502,
-      "recall": 0.7504873279717595,
-      "f1": 0.8517694187267884,
-      "fpr": 0.01
-    },
-    {
-      "method": "Heuristic-only",
-      "seed": 47,
-      "duration_s": 0.001077413558959961,
-      "accuracy": 0.78,
-      "precision": 0.8746803046683368,
-      "recall": 0.6666666653671215,
-      "f1": 0.7566366755744628,
-      "fpr": 0.12
-    },
-    {
-      "method": "OLYMPUS-CNN+GBM",
-      "seed": 48,
-      "duration_s": 0.0010752677917480469,
-      "accuracy": 0.974,
-      "precision": 0.9794238662974818,
-      "recall": 0.9674796728303259,
-      "f1": 0.9734146309527872,
-      "fpr": 0.02
-    },
-    {
-      "method": "CNN-only",
-      "seed": 48,
-      "duration_s": 0.00107574462890625,
-      "accuracy": 0.943,
-      "precision": 0.9503105570386945,
-      "recall": 0.9329268273721,
-      "f1": 0.9415379596499697,
-      "fpr": 0.04
-    },
-    {
-      "method": "GBM-only",
-      "seed": 48,
-      "duration_s": 0.0010759830474853516,
-      "accuracy": 0.944,
-      "precision": 0.9579831912647412,
-      "recall": 0.9268292664088836,
-      "f1": 0.9421482585208582,
-      "fpr": 0.05
-    },
-    {
-      "method": "Random Forest (baseline)",
-      "seed": 48,
-      "duration_s": 0.0010762214660644531,
-      "accuracy": 0.913,
-      "precision": 0.9107505052520274,
-      "recall": 0.9126016241613788,
-      "f1": 0.9116746250532259,
-      "fpr": 0.07
-    },
-    {
-      "method": "Signature-based (ClamAV)",
-      "seed": 48,
-      "duration_s": 0.0010764598846435547,
-      "accuracy": 0.864,
-      "precision": 0.9863387951192929,
-      "recall": 0.7337398359070328,
-      "f1": 0.8414913503135297,
-      "fpr": 0.01
-    },
-    {
-      "method": "Heuristic-only",
-      "seed": 48,
-      "duration_s": 0.0010769367218017578,
-      "accuracy": 0.799,
-      "precision": 0.8818897614648563,
-      "recall": 0.6829268278802301,
-      "f1": 0.7697589564919319,
-      "fpr": 0.12
-    },
-    {
-      "method": "OLYMPUS-CNN+GBM",
-      "seed": 49,
-      "duration_s": 0.0010666847229003906,
-      "accuracy": 0.978,
-      "precision": 0.9814814794619723,
-      "recall": 0.9734693857684298,
-      "f1": 0.9774585143991069,
-      "fpr": 0.02
-    },
-    {
-      "method": "CNN-only",
-      "seed": 49,
-      "duration_s": 0.0010669231414794922,
-      "accuracy": 0.954,
-      "precision": 0.968354428336805,
-      "recall": 0.9367346919658476,
-      "f1": 0.9522816558386605,
-      "fpr": 0.04
-    },
-    {
-      "method": "GBM-only",
-      "seed": 49,
-      "duration_s": 0.0010673999786376953,
-      "accuracy": 0.92,
-      "precision": 0.932489449509516,
-      "recall": 0.902040814485631,
-      "f1": 0.9170119463682758,
-      "fpr": 0.05
-    },
-    {
-      "method": "Random Forest (baseline)",
-      "seed": 49,
-      "duration_s": 0.0010673999786376953,
-      "accuracy": 0.911,
-      "precision": 0.9275053285127818,
-      "recall": 0.8877551002290712,
-      "f1": 0.9071944931343077,
-      "fpr": 0.07
-    },
-    {
-      "method": "Signature-based (ClamAV)",
-      "seed": 49,
-      "duration_s": 0.0010676383972167969,
-      "accuracy": 0.839,
-      "precision": 0.979591833878741,
-      "recall": 0.6857142843148688,
-      "f1": 0.8067222027099462,
-      "fpr": 0.01
-    },
-    {
-      "method": "Heuristic-only",
-      "seed": 49,
-      "duration_s": 0.0010678768157958984,
-      "accuracy": 0.783,
-      "precision": 0.8659517403057594,
-      "recall": 0.659183672124115,
-      "f1": 0.7485510717661983,
-      "fpr": 0.12
-    },
-    {
-      "method": "OLYMPUS-CNN+GBM",
-      "seed": 50,
-      "duration_s": 0.0010459423065185547,
-      "accuracy": 0.976,
-      "precision": 0.9863281230735779,
-      "recall": 0.9674329483382511,
-      "f1": 0.9767886664362111,
-      "fpr": 0.02
-    },
-    {
-      "method": "CNN-only",
-      "seed": 50,
-      "duration_s": 0.0010461807250976562,
-      "accuracy": 0.946,
-      "precision": 0.9661354562427581,
-      "recall": 0.9291187721664391,
-      "f1": 0.9472651233408704,
-      "fpr": 0.04
-    },
-    {
-      "method": "GBM-only",
-      "seed": 50,
-      "duration_s": 0.0010464191436767578,
-      "accuracy": 0.923,
-      "precision": 0.9388560139273057,
-      "recall": 0.9118773928891237,
-      "f1": 0.9251695663355367,
-      "fpr": 0.05
-    },
-    {
-      "method": "Random Forest (baseline)",
-      "seed": 50,
-      "duration_s": 0.001046895980834961,
-      "accuracy": 0.917,
-      "precision": 0.9452332638027723,
-      "recall": 0.8927203048032178,
-      "f1": 0.9182260995843434,
-      "fpr": 0.07
-    },
-    {
-      "method": "Signature-based (ClamAV)",
-      "seed": 50,
-      "duration_s": 0.0010471343994140625,
-      "accuracy": 0.863,
-      "precision": 0.9948586092677156,
-      "recall": 0.7413793089245607,
-      "f1": 0.8496153155977905,
-      "fpr": 0.01
-    },
-    {
-      "method": "Heuristic-only",
-      "seed": 50,
-      "duration_s": 0.001047372817993164,
-      "accuracy": 0.757,
-      "precision": 0.8531645548021151,
-      "recall": 0.6455938684950309,
-      "f1": 0.7350049605504118,
-      "fpr": 0.12
-    },
-    {
-      "method": "OLYMPUS-CNN+GBM",
-      "seed": 51,
-      "duration_s": 0.0010690689086914062,
-      "accuracy": 0.98,
-      "precision": 0.9883268463262124,
-      "recall": 0.9731800747640228,
-      "f1": 0.9806944788318167,
-      "fpr": 0.02
-    },
-    {
-      "method": "CNN-only",
-      "seed": 51,
-      "duration_s": 0.0010695457458496094,
-      "accuracy": 0.945,
-      "precision": 0.9587426307293858,
-      "recall": 0.9348658985922109,
-      "f1": 0.9466532324819825,
-      "fpr": 0.04
-    },
-    {
-      "method": "GBM-only",
-      "seed": 51,
-      "duration_s": 0.0010738372802734375,
-      "accuracy": 0.937,
-      "precision": 0.9617706218073026,
-      "recall": 0.9157088105063049,
-      "f1": 0.9381741795197204,
-      "fpr": 0.05
-    },
-    {
-      "method": "Random Forest (baseline)",
-      "seed": 51,
-      "duration_s": 0.001074075698852539,
-      "accuracy": 0.91,
-      "precision": 0.9426229488880677,
-      "recall": 0.8812260519516742,
-      "f1": 0.9108905878720511,
-      "fpr": 0.07
-    },
-    {
-      "method": "Signature-based (ClamAV)",
-      "seed": 51,
-      "duration_s": 0.001074075698852539,
-      "accuracy": 0.864,
-      "precision": 0.9898477132237368,
-      "recall": 0.7471264353503325,
-      "f1": 0.851527892183879,
-      "fpr": 0.01
-    },
-    {
-      "method": "Heuristic-only",
-      "seed": 51,
-      "duration_s": 0.0010743141174316406,
-      "accuracy": 0.74,
-      "precision": 0.8429319349661468,
-      "recall": 0.616858236366172,
-      "f1": 0.7123888909471586,
-      "fpr": 0.12
+    "module6_titan_evolution": {
+      "experiment_metadata": {
+        "title": "Module 6 TITAN Evolution Calibration",
+        "module": "Module 6 / TITAN Co-Evolution",
+        "evidence_type": "synthetic co-evolutionary simulation",
+        "scenario": "Seeded evolutionary calibration comparing TITAN to generic search baselines under a shared synthetic fitness model.",
+        "primary_metric": "best_fitness",
+        "reference_method": "Standard-GA",
+        "null_anchor": null,
+        "metric_directions": {
+          "best_fitness": "higher",
+          "convergence_gen": "lower"
+        },
+        "metric_notes": {
+          "best_fitness": "Synthetic objective value under the shared co-evolutionary scoring model.",
+          "convergence_gen": "Generation index at which the seeded run reaches its best recorded score."
+        },
+        "claims_supported": [
+          "relative TITAN behavior inside the current synthetic search loop",
+          "co-evolutionary calibration against generic optimizers",
+          "repeatable export of attacker/defender simulation summaries"
+        ],
+        "not_claimed": [
+          "real-world autonomous red-team/blue-team dominance",
+          "validated search superiority on operational cyber ranges",
+          "field-ready attack automation performance"
+        ]
+      },
+      "summary": {
+        "primary_metric": "best_fitness",
+        "seed_count": 10,
+        "method_count": 6,
+        "recommended_reading": "Read the primary metric first, then inspect the raw seed-level rows before making any claims beyond synthetic calibration.",
+        "primary_ordering": [
+          "OLYMPUS-TITAN",
+          "CMA-ES",
+          "NSGA-II",
+          "PSO",
+          "Standard-GA",
+          "Random"
+        ],
+        "metric_summaries": {
+          "best_fitness": {
+            "direction": "higher",
+            "interpretation": "Synthetic objective value under the shared co-evolutionary scoring model.",
+            "reference_method": "Standard-GA",
+            "ordering": [
+              "OLYMPUS-TITAN",
+              "CMA-ES",
+              "NSGA-II",
+              "PSO",
+              "Standard-GA",
+              "Random"
+            ],
+            "methods": {
+              "OLYMPUS-TITAN": {
+                "mean": 0.85,
+                "std": 0.0165,
+                "ci_lo": 0.8408,
+                "ci_hi": 0.8599,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -8.8261,
+                "significant_p05": true
+              },
+              "CMA-ES": {
+                "mean": 0.7874,
+                "std": 0.0122,
+                "ci_lo": 0.7805,
+                "ci_hi": 0.7946,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -6.1172,
+                "significant_p05": true
+              },
+              "NSGA-II": {
+                "mean": 0.7367,
+                "std": 0.0123,
+                "ci_lo": 0.7291,
+                "ci_hi": 0.7429,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": -3.2291,
+                "significant_p05": true
+              },
+              "PSO": {
+                "mean": 0.7198,
+                "std": 0.0214,
+                "ci_lo": 0.7071,
+                "ci_hi": 0.7327,
+                "n": 10,
+                "wilcoxon_W": 3,
+                "p_value": 0.0125,
+                "cohens_d": -1.8542,
+                "significant_p05": true
+              },
+              "Standard-GA": {
+                "mean": 0.6799,
+                "std": 0.0217,
+                "ci_lo": 0.6667,
+                "ci_hi": 0.692,
+                "n": 10
+              },
+              "Random": {
+                "mean": 0.4979,
+                "std": 0.0109,
+                "ci_lo": 0.4913,
+                "ci_hi": 0.5037,
+                "n": 10,
+                "wilcoxon_W": 0,
+                "p_value": 0.0051,
+                "cohens_d": 10.6153,
+                "significant_p05": true
+              }
+            }
+          },
+          "convergence_gen": {
+            "direction": "lower",
+            "interpretation": "Generation index at which the seeded run reaches its best recorded score.",
+            "reference_method": "Standard-GA",
+            "ordering": [
+              "NSGA-II",
+              "Standard-GA",
+              "PSO",
+              "OLYMPUS-TITAN",
+              "CMA-ES",
+              "Random"
+            ],
+            "methods": {
+              "OLYMPUS-TITAN": {
+                "mean": 32.3,
+                "std": 9.056,
+                "ci_lo": 27.2,
+                "ci_hi": 37.5,
+                "n": 10,
+                "wilcoxon_W": 26,
+                "p_value": 0.8785,
+                "cohens_d": -0.1352,
+                "significant_p05": false
+              },
+              "CMA-ES": {
+                "mean": 34.7,
+                "std": 9.1171,
+                "ci_lo": 29.6,
+                "ci_hi": 40.3,
+                "n": 10,
+                "wilcoxon_W": 16,
+                "p_value": 0.4413,
+                "cohens_d": -0.3659,
+                "significant_p05": false
+              },
+              "NSGA-II": {
+                "mean": 30.8,
+                "std": 8.979,
+                "ci_lo": 25.6,
+                "ci_hi": 35.9,
+                "n": 10,
+                "wilcoxon_W": 27,
+                "p_value": 0.9594,
+                "cohens_d": 0.0097,
+                "significant_p05": false
+              },
+              "PSO": {
+                "mean": 31.2,
+                "std": 8.8919,
+                "ci_lo": 26.0,
+                "ci_hi": 36.9,
+                "n": 10,
+                "wilcoxon_W": 26,
+                "p_value": 0.8785,
+                "cohens_d": -0.0292,
+                "significant_p05": false
+              },
+              "Standard-GA": {
+                "mean": 30.9,
+                "std": 11.5128,
+                "ci_lo": 24.3,
+                "ci_hi": 38.1,
+                "n": 10
+              },
+              "Random": {
+                "mean": 35.3,
+                "std": 11.265,
+                "ci_lo": 29.0,
+                "ci_hi": 41.8,
+                "n": 10,
+                "wilcoxon_W": 19,
+                "p_value": 0.3863,
+                "cohens_d": -0.3863,
+                "significant_p05": false
+              }
+            }
+          }
+        }
+      },
+      "raw_runs": [
+        {
+          "method": "OLYMPUS-TITAN",
+          "seed": 42,
+          "best_fitness": 0.8471181934084414,
+          "convergence_gen": 28
+        },
+        {
+          "method": "CMA-ES",
+          "seed": 42,
+          "best_fitness": 0.7765419279933696,
+          "convergence_gen": 27
+        },
+        {
+          "method": "NSGA-II",
+          "seed": 42,
+          "best_fitness": 0.7454719801311677,
+          "convergence_gen": 41
+        },
+        {
+          "method": "PSO",
+          "seed": 42,
+          "best_fitness": 0.7422014218892671,
+          "convergence_gen": 43
+        },
+        {
+          "method": "Standard-GA",
+          "seed": 42,
+          "best_fitness": 0.6866463668813544,
+          "convergence_gen": 33
+        },
+        {
+          "method": "Random",
+          "seed": 42,
+          "best_fitness": 0.49465325043005665,
+          "convergence_gen": 21
+        },
+        {
+          "method": "OLYMPUS-TITAN",
+          "seed": 43,
+          "best_fitness": 0.8799721690208174,
+          "convergence_gen": 24
+        },
+        {
+          "method": "CMA-ES",
+          "seed": 43,
+          "best_fitness": 0.7874055173273143,
+          "convergence_gen": 50
+        },
+        {
+          "method": "NSGA-II",
+          "seed": 43,
+          "best_fitness": 0.7109748163252656,
+          "convergence_gen": 45
+        },
+        {
+          "method": "PSO",
+          "seed": 43,
+          "best_fitness": 0.7169621090037432,
+          "convergence_gen": 23
+        },
+        {
+          "method": "Standard-GA",
+          "seed": 43,
+          "best_fitness": 0.6575191701976466,
+          "convergence_gen": 20
+        },
+        {
+          "method": "Random",
+          "seed": 43,
+          "best_fitness": 0.5068095791978319,
+          "convergence_gen": 36
+        },
+        {
+          "method": "OLYMPUS-TITAN",
+          "seed": 44,
+          "best_fitness": 0.8290216333340107,
+          "convergence_gen": 47
+        },
+        {
+          "method": "CMA-ES",
+          "seed": 44,
+          "best_fitness": 0.793585584898043,
+          "convergence_gen": 23
+        },
+        {
+          "method": "NSGA-II",
+          "seed": 44,
+          "best_fitness": 0.7463519643210542,
+          "convergence_gen": 20
+        },
+        {
+          "method": "PSO",
+          "seed": 44,
+          "best_fitness": 0.7227957427420041,
+          "convergence_gen": 27
+        },
+        {
+          "method": "Standard-GA",
+          "seed": 44,
+          "best_fitness": 0.6819769595655162,
+          "convergence_gen": 25
+        },
+        {
+          "method": "Random",
+          "seed": 44,
+          "best_fitness": 0.5017796995506241,
+          "convergence_gen": 44
+        },
+        {
+          "method": "OLYMPUS-TITAN",
+          "seed": 45,
+          "best_fitness": 0.8468290928459156,
+          "convergence_gen": 22
+        },
+        {
+          "method": "CMA-ES",
+          "seed": 45,
+          "best_fitness": 0.8029245271915363,
+          "convergence_gen": 29
+        },
+        {
+          "method": "NSGA-II",
+          "seed": 45,
+          "best_fitness": 0.7358994091417022,
+          "convergence_gen": 20
+        },
+        {
+          "method": "PSO",
+          "seed": 45,
+          "best_fitness": 0.7165765976100836,
+          "convergence_gen": 23
+        },
+        {
+          "method": "Standard-GA",
+          "seed": 45,
+          "best_fitness": 0.6778871780553135,
+          "convergence_gen": 29
+        },
+        {
+          "method": "Random",
+          "seed": 45,
+          "best_fitness": 0.5097836736985512,
+          "convergence_gen": 47
+        },
+        {
+          "method": "OLYMPUS-TITAN",
+          "seed": 46,
+          "best_fitness": 0.8654349139532207,
+          "convergence_gen": 38
+        },
+        {
+          "method": "CMA-ES",
+          "seed": 46,
+          "best_fitness": 0.7669456345130945,
+          "convergence_gen": 38
+        },
+        {
+          "method": "NSGA-II",
+          "seed": 46,
+          "best_fitness": 0.7491687867782636,
+          "convergence_gen": 36
+        },
+        {
+          "method": "PSO",
+          "seed": 46,
+          "best_fitness": 0.6988865447601663,
+          "convergence_gen": 24
+        },
+        {
+          "method": "Standard-GA",
+          "seed": 46,
+          "best_fitness": 0.6380518324634114,
+          "convergence_gen": 21
+        },
+        {
+          "method": "Random",
+          "seed": 46,
+          "best_fitness": 0.47564144363485017,
+          "convergence_gen": 20
+        },
+        {
+          "method": "OLYMPUS-TITAN",
+          "seed": 47,
+          "best_fitness": 0.8373335628000286,
+          "convergence_gen": 34
+        },
+        {
+          "method": "CMA-ES",
+          "seed": 47,
+          "best_fitness": 0.7970152268212237,
+          "convergence_gen": 38
+        },
+        {
+          "method": "NSGA-II",
+          "seed": 47,
+          "best_fitness": 0.7267167132703926,
+          "convergence_gen": 32
+        },
+        {
+          "method": "PSO",
+          "seed": 47,
+          "best_fitness": 0.7299558259943828,
+          "convergence_gen": 39
+        },
+        {
+          "method": "Standard-GA",
+          "seed": 47,
+          "best_fitness": 0.7001426956895465,
+          "convergence_gen": 20
+        },
+        {
+          "method": "Random",
+          "seed": 47,
+          "best_fitness": 0.5052945365176952,
+          "convergence_gen": 50
+        },
+        {
+          "method": "OLYMPUS-TITAN",
+          "seed": 48,
+          "best_fitness": 0.8398460173129566,
+          "convergence_gen": 42
+        },
+        {
+          "method": "CMA-ES",
+          "seed": 48,
+          "best_fitness": 0.7768302272088683,
+          "convergence_gen": 37
+        },
+        {
+          "method": "NSGA-II",
+          "seed": 48,
+          "best_fitness": 0.7247782915584108,
+          "convergence_gen": 26
+        },
+        {
+          "method": "PSO",
+          "seed": 48,
+          "best_fitness": 0.754687855727827,
+          "convergence_gen": 42
+        },
+        {
+          "method": "Standard-GA",
+          "seed": 48,
+          "best_fitness": 0.6809055292030829,
+          "convergence_gen": 50
+        },
+        {
+          "method": "Random",
+          "seed": 48,
+          "best_fitness": 0.4879977605169737,
+          "convergence_gen": 45
+        },
+        {
+          "method": "OLYMPUS-TITAN",
+          "seed": 49,
+          "best_fitness": 0.8688552806983345,
+          "convergence_gen": 23
+        },
+        {
+          "method": "CMA-ES",
+          "seed": 49,
+          "best_fitness": 0.7884257789467428,
+          "convergence_gen": 30
+        },
+        {
+          "method": "NSGA-II",
+          "seed": 49,
+          "best_fitness": 0.7403175005680115,
+          "convergence_gen": 21
+        },
+        {
+          "method": "PSO",
+          "seed": 49,
+          "best_fitness": 0.6860692666545757,
+          "convergence_gen": 41
+        },
+        {
+          "method": "Standard-GA",
+          "seed": 49,
+          "best_fitness": 0.7113531611150627,
+          "convergence_gen": 24
+        },
+        {
+          "method": "Random",
+          "seed": 49,
+          "best_fitness": 0.5090678235447386,
+          "convergence_gen": 34
+        },
+        {
+          "method": "OLYMPUS-TITAN",
+          "seed": 50,
+          "best_fitness": 0.8342670074046731,
+          "convergence_gen": 40
+        },
+        {
+          "method": "CMA-ES",
+          "seed": 50,
+          "best_fitness": 0.7802435377758208,
+          "convergence_gen": 48
+        },
+        {
+          "method": "NSGA-II",
+          "seed": 50,
+          "best_fitness": 0.7410695025722288,
+          "convergence_gen": 30
+        },
+        {
+          "method": "PSO",
+          "seed": 50,
+          "best_fitness": 0.7326176015182769,
+          "convergence_gen": 22
+        },
+        {
+          "method": "Standard-GA",
+          "seed": 50,
+          "best_fitness": 0.6661570802430936,
+          "convergence_gen": 37
+        },
+        {
+          "method": "Random",
+          "seed": 50,
+          "best_fitness": 0.49658518966719106,
+          "convergence_gen": 22
+        },
+        {
+          "method": "OLYMPUS-TITAN",
+          "seed": 51,
+          "best_fitness": 0.8509618894146429,
+          "convergence_gen": 25
+        },
+        {
+          "method": "CMA-ES",
+          "seed": 51,
+          "best_fitness": 0.8036037015506933,
+          "convergence_gen": 27
+        },
+        {
+          "method": "NSGA-II",
+          "seed": 51,
+          "best_fitness": 0.7462788030960031,
+          "convergence_gen": 37
+        },
+        {
+          "method": "PSO",
+          "seed": 51,
+          "best_fitness": 0.6969185702240911,
+          "convergence_gen": 28
+        },
+        {
+          "method": "Standard-GA",
+          "seed": 51,
+          "best_fitness": 0.6980122794782994,
+          "convergence_gen": 50
+        },
+        {
+          "method": "Random",
+          "seed": 51,
+          "best_fitness": 0.4910149621674341,
+          "convergence_gen": 34
+        }
+      ]
     }
-  ],
-  "module7_social_engineering": [
-    {
-      "method": "OLYMPUS-SE-Detector",
-      "seed": 42,
-      "accuracy": 0.9622507230934517,
-      "precision": 0.9705015268620643,
-      "recall": 0.9585590967042207,
-      "f1": 0.9644928451991482
-    },
-    {
-      "method": "URL-only classifier",
-      "seed": 42,
-      "accuracy": 0.857167813381378,
-      "precision": 0.938663322609208,
-      "recall": 0.8188868413843233,
-      "f1": 0.8746932198869375
-    },
-    {
-      "method": "Header-only",
-      "seed": 42,
-      "accuracy": 0.8233529121350311,
-      "precision": 0.9148143195072576,
-      "recall": 0.7787241171621712,
-      "f1": 0.841300719546995
-    },
-    {
-      "method": "SpamAssassin (baseline)",
-      "seed": 42,
-      "accuracy": 0.7877272346262196,
-      "precision": 0.9485850971916436,
-      "recall": 0.7133231834406771,
-      "f1": 0.8143016579529267
-    },
-    {
-      "method": "Keyword matching",
-      "seed": 42,
-      "accuracy": 0.6733074620309323,
-      "precision": 0.7988008488523068,
-      "recall": 0.597830413158548,
-      "f1": 0.6838556640718096
-    },
-    {
-      "method": "OLYMPUS-SE-Detector",
-      "seed": 43,
-      "accuracy": 0.9729348453577374,
-      "precision": 0.9683649243540471,
-      "recall": 0.9749860845104087,
-      "f1": 0.9716637250138271
-    },
-    {
-      "method": "URL-only classifier",
-      "seed": 43,
-      "accuracy": 0.8625082846935183,
-      "precision": 0.9382939902801438,
-      "recall": 0.8268887864337758,
-      "f1": 0.8790753565446985
-    },
-    {
-      "method": "Header-only",
-      "seed": 43,
-      "accuracy": 0.8184740729876218,
-      "precision": 0.9144573090386425,
-      "recall": 0.7716116296710018,
-      "f1": 0.8369829486810836
-    },
-    {
-      "method": "SpamAssassin (baseline)",
-      "seed": 43,
-      "accuracy": 0.7766209911293388,
-      "precision": 0.9436805724918021,
-      "recall": 0.6987595850988232,
-      "f1": 0.802958257898877
-    },
-    {
-      "method": "Keyword matching",
-      "seed": 43,
-      "accuracy": 0.682204188989707,
-      "precision": 0.802104476794582,
-      "recall": 0.6105655400553373,
-      "f1": 0.6933494737464653
-    },
-    {
-      "method": "OLYMPUS-SE-Detector",
-      "seed": 44,
-      "accuracy": 0.9546386527995504,
-      "precision": 0.9660228394028514,
-      "recall": 0.9495108166670053,
-      "f1": 0.9576951607258524
-    },
-    {
-      "method": "URL-only classifier",
-      "seed": 44,
-      "accuracy": 0.8625379289943543,
-      "precision": 0.9453645965136238,
-      "recall": 0.8240356616093533,
-      "f1": 0.8805398291358287
-    },
-    {
-      "method": "Header-only",
-      "seed": 44,
-      "accuracy": 0.8219043343566351,
-      "precision": 0.9057539601148589,
-      "recall": 0.7803777585787444,
-      "f1": 0.8384040442153322
-    },
-    {
-      "method": "SpamAssassin (baseline)",
-      "seed": 44,
-      "accuracy": 0.7855584583816337,
-      "precision": 0.9461763016705445,
-      "recall": 0.710988479782758,
-      "f1": 0.8118927603504459
-    },
-    {
-      "method": "Keyword matching",
-      "seed": 44,
-      "accuracy": 0.6781501329720105,
-      "precision": 0.7964913465473645,
-      "recall": 0.6066436216914171,
-      "f1": 0.6887235536009573
-    },
-    {
-      "method": "OLYMPUS-SE-Detector",
-      "seed": 45,
-      "accuracy": 0.9601708429567051,
-      "precision": 0.9640584548314592,
-      "recall": 0.9584145464229578,
-      "f1": 0.9612277160675466
-    },
-    {
-      "method": "URL-only classifier",
-      "seed": 45,
-      "accuracy": 0.8638711171948797,
-      "precision": 0.9406494765796479,
-      "recall": 0.8279177469706448,
-      "f1": 0.8806902498514695
-    },
-    {
-      "method": "Header-only",
-      "seed": 45,
-      "accuracy": 0.8228389003758307,
-      "precision": 0.9067770434097505,
-      "recall": 0.7813385780026076,
-      "f1": 0.8393968481518994
-    },
-    {
-      "method": "SpamAssassin (baseline)",
-      "seed": 45,
-      "accuracy": 0.7835267367919684,
-      "precision": 0.9435100996172313,
-      "recall": 0.7089435890276568,
-      "f1": 0.8095779459526559
-    },
-    {
-      "method": "Keyword matching",
-      "seed": 45,
-      "accuracy": 0.6683847862789349,
-      "precision": 0.7902147897579664,
-      "recall": 0.593827670077372,
-      "f1": 0.6780876772734884
-    },
-    {
-      "method": "OLYMPUS-SE-Detector",
-      "seed": 46,
-      "accuracy": 0.9693812972951452,
-      "precision": 0.9731144806682299,
-      "recall": 0.9677174569766104,
-      "f1": 0.9704079648628668
-    },
-    {
-      "method": "URL-only classifier",
-      "seed": 46,
-      "accuracy": 0.8487918630645372,
-      "precision": 0.9472103826418465,
-      "recall": 0.8031721439360022,
-      "f1": 0.8692643437661574
-    },
-    {
-      "method": "Header-only",
-      "seed": 46,
-      "accuracy": 0.8213432767287647,
-      "precision": 0.9009129245537224,
-      "recall": 0.7816188950885872,
-      "f1": 0.8370363495321395
-    },
-    {
-      "method": "SpamAssassin (baseline)",
-      "seed": 46,
-      "accuracy": 0.7721450330895802,
-      "precision": 0.9530935685744734,
-      "recall": 0.6890259162317056,
-      "f1": 0.7998270229472038
-    },
-    {
-      "method": "Keyword matching",
-      "seed": 46,
-      "accuracy": 0.6774781110882271,
-      "precision": 0.800579417035259,
-      "recall": 0.60370282083991,
-      "f1": 0.6883398438934007
-    },
-    {
-      "method": "OLYMPUS-SE-Detector",
-      "seed": 47,
-      "accuracy": 0.9572906049684182,
-      "precision": 0.9653273682948551,
-      "recall": 0.9536667814000143,
-      "f1": 0.9594611476381074
-    },
-    {
-      "method": "URL-only classifier",
-      "seed": 47,
-      "accuracy": 0.8524536147541312,
-      "precision": 0.9405046606741214,
-      "recall": 0.811212207161257,
-      "f1": 0.8710864639106404
-    },
-    {
-      "method": "Header-only",
-      "seed": 47,
-      "accuracy": 0.8151504758234335,
-      "precision": 0.9063033297681728,
-      "recall": 0.7700478764465214,
-      "f1": 0.8326376186544795
-    },
-    {
-      "method": "SpamAssassin (baseline)",
-      "seed": 47,
-      "accuracy": 0.791652853252514,
-      "precision": 0.9457264165016205,
-      "recall": 0.7200713478447731,
-      "f1": 0.8176143601474313
-    },
-    {
-      "method": "Keyword matching",
-      "seed": 47,
-      "accuracy": 0.6781155092238669,
-      "precision": 0.8008533038065623,
-      "recall": 0.6045982975074605,
-      "f1": 0.6890229433308198
-    },
-    {
-      "method": "OLYMPUS-SE-Detector",
-      "seed": 48,
-      "accuracy": 0.9596838390188697,
-      "precision": 0.9703214615749652,
-      "recall": 0.9549230086564783,
-      "f1": 0.9625601553444799
-    },
-    {
-      "method": "URL-only classifier",
-      "seed": 48,
-      "accuracy": 0.8588146915377766,
-      "precision": 0.9468876241305213,
-      "recall": 0.8179700706295671,
-      "f1": 0.8777198300213981
-    },
-    {
-      "method": "Header-only",
-      "seed": 48,
-      "accuracy": 0.8266116761436084,
-      "precision": 0.9089249961738372,
-      "recall": 0.7860582481118598,
-      "f1": 0.8430379132622293
-    },
-    {
-      "method": "SpamAssassin (baseline)",
-      "seed": 48,
-      "accuracy": 0.786217103182306,
-      "precision": 0.9504992561463248,
-      "recall": 0.7104527646015414,
-      "f1": 0.8131293490490288
-    },
-    {
-      "method": "Keyword matching",
-      "seed": 48,
-      "accuracy": 0.6895604638666475,
-      "precision": 0.8074196134299344,
-      "recall": 0.6198789932786599,
-      "f1": 0.7013278148104723
-    },
-    {
-      "method": "OLYMPUS-SE-Detector",
-      "seed": 49,
-      "accuracy": 0.9689674148234113,
-      "precision": 0.9679427338372278,
-      "recall": 0.9694276403491673,
-      "f1": 0.9686841180370066
-    },
-    {
-      "method": "URL-only classifier",
-      "seed": 49,
-      "accuracy": 0.8663816261138304,
-      "precision": 0.9376887901365326,
-      "recall": 0.8328352481035936,
-      "f1": 0.8821567154492883
-    },
-    {
-      "method": "Header-only",
-      "seed": 49,
-      "accuracy": 0.8198050097423272,
-      "precision": 0.9067507128103164,
-      "recall": 0.7768158374682914,
-      "f1": 0.8367686989811024
-    },
-    {
-      "method": "SpamAssassin (baseline)",
-      "seed": 49,
-      "accuracy": 0.7952935196244164,
-      "precision": 0.9449608546978343,
-      "recall": 0.7256765805575314,
-      "f1": 0.8209268353065616
-    },
-    {
-      "method": "Keyword matching",
-      "seed": 49,
-      "accuracy": 0.6794266888655487,
-      "precision": 0.7953946188091597,
-      "recall": 0.609199081091542,
-      "f1": 0.6899551463748983
-    },
-    {
-      "method": "OLYMPUS-SE-Detector",
-      "seed": 50,
-      "accuracy": 0.9574751872584489,
-      "precision": 0.9693941598458026,
-      "recall": 0.9521335037023365,
-      "f1": 0.9606858074947927
-    },
-    {
-      "method": "URL-only classifier",
-      "seed": 50,
-      "accuracy": 0.8564593830962949,
-      "precision": 0.9453015080445483,
-      "recall": 0.8151567716004048,
-      "f1": 0.8754180620888833
-    },
-    {
-      "method": "Header-only",
-      "seed": 50,
-      "accuracy": 0.8030282822092571,
-      "precision": 0.9016533934908421,
-      "recall": 0.7538512415666271,
-      "f1": 0.8211539915685498
-    },
-    {
-      "method": "SpamAssassin (baseline)",
-      "seed": 50,
-      "accuracy": 0.7895929122004057,
-      "precision": 0.9444174090419644,
-      "recall": 0.717516415816611,
-      "f1": 0.8154772187630942
-    },
-    {
-      "method": "Keyword matching",
-      "seed": 50,
-      "accuracy": 0.6742492142515196,
-      "precision": 0.8015208712354066,
-      "recall": 0.5981177922408807,
-      "f1": 0.6850390231834563
-    },
-    {
-      "method": "OLYMPUS-SE-Detector",
-      "seed": 51,
-      "accuracy": 0.9615663836788231,
-      "precision": 0.96396870871983,
-      "recall": 0.9604809447073215,
-      "f1": 0.9622211662020851
-    },
-    {
-      "method": "URL-only classifier",
-      "seed": 51,
-      "accuracy": 0.8634578354909261,
-      "precision": 0.9347784431362217,
-      "recall": 0.8297512997303897,
-      "f1": 0.8791386959823162
-    },
-    {
-      "method": "Header-only",
-      "seed": 51,
-      "accuracy": 0.8211460704486704,
-      "precision": 0.9005548910712118,
-      "recall": 0.7814783455813067,
-      "f1": 0.8368012149147127
-    },
-    {
-      "method": "SpamAssassin (baseline)",
-      "seed": 51,
-      "accuracy": 0.7919781756548472,
-      "precision": 0.9501113344858617,
-      "recall": 0.7190061397391496,
-      "f1": 0.8185588901929546
-    },
-    {
-      "method": "Keyword matching",
-      "seed": 51,
-      "accuracy": 0.6866084265646426,
-      "precision": 0.8058592722285688,
-      "recall": 0.615886675154276,
-      "f1": 0.6981804866593471
-    }
-  ],
-  "module9_llm_defense": [
-    {
-      "method": "OLYMPUS-LLM-Defense",
-      "seed": 42,
-      "detection_rate": 0.9385590967042207,
-      "false_positive_rate": 0.04,
-      "f1": 0.9491579796711828
-    },
-    {
-      "method": "Pattern-matching only",
-      "seed": 42,
-      "detection_rate": 0.7782709639966848,
-      "false_positive_rate": 0.06,
-      "f1": 0.8515237651381423
-    },
-    {
-      "method": "Perplexity filter",
-      "seed": 42,
-      "detection_rate": 0.7188868413843233,
-      "false_positive_rate": 0.1,
-      "f1": 0.7993118988312841
-    },
-    {
-      "method": "Keyword blacklist",
-      "seed": 42,
-      "detection_rate": 0.5570198372509887,
-      "false_positive_rate": 0.12,
-      "f1": 0.6822134294427856
-    },
-    {
-      "method": "No defense (baseline)",
-      "seed": 42,
-      "detection_rate": 0,
-      "false_positive_rate": 0.0,
-      "f1": 0.0
-    },
-    {
-      "method": "OLYMPUS-LLM-Defense",
-      "seed": 43,
-      "detection_rate": 0.9549860845104087,
-      "false_positive_rate": 0.04,
-      "f1": 0.9574859784126228
-    },
-    {
-      "method": "Pattern-matching only",
-      "seed": 43,
-      "detection_rate": 0.7837027586636571,
-      "false_positive_rate": 0.06,
-      "f1": 0.8547647348810878
-    },
-    {
-      "method": "Perplexity filter",
-      "seed": 43,
-      "detection_rate": 0.7268887864337759,
-      "false_positive_rate": 0.1,
-      "f1": 0.8042338371604598
-    },
-    {
-      "method": "Keyword blacklist",
-      "seed": 43,
-      "detection_rate": 0.5587591054008318,
-      "false_positive_rate": 0.12,
-      "f1": 0.6835163289654108
-    },
-    {
-      "method": "No defense (baseline)",
-      "seed": 43,
-      "detection_rate": 0,
-      "false_positive_rate": 0.0,
-      "f1": 0.0
-    },
-    {
-      "method": "OLYMPUS-LLM-Defense",
-      "seed": 44,
-      "detection_rate": 0.9295108166670053,
-      "false_positive_rate": 0.04,
-      "f1": 0.9445089214359578
-    },
-    {
-      "method": "Pattern-matching only",
-      "seed": 44,
-      "detection_rate": 0.7867927924490216,
-      "false_positive_rate": 0.06,
-      "f1": 0.8565993555642392
-    },
-    {
-      "method": "Perplexity filter",
-      "seed": 44,
-      "detection_rate": 0.7240356616093533,
-      "false_positive_rate": 0.1,
-      "f1": 0.8024844646089178
-    },
-    {
-      "method": "Keyword blacklist",
-      "seed": 44,
-      "detection_rate": 0.5452468942146199,
-      "false_positive_rate": 0.12,
-      "f1": 0.6733106133417834
-    },
-    {
-      "method": "No defense (baseline)",
-      "seed": 44,
-      "detection_rate": 0.000377758578744317,
-      "false_positive_rate": 0.0,
-      "f1": 0.0007552311072278369
-    },
-    {
-      "method": "OLYMPUS-LLM-Defense",
-      "seed": 45,
-      "detection_rate": 0.9384145464229577,
-      "false_positive_rate": 0.04,
-      "f1": 0.94908405724289
-    },
-    {
-      "method": "Pattern-matching only",
-      "seed": 45,
-      "detection_rate": 0.7914622635957681,
-      "false_positive_rate": 0.06,
-      "f1": 0.8593592984872156
-    },
-    {
-      "method": "Perplexity filter",
-      "seed": 45,
-      "detection_rate": 0.7279177469706448,
-      "false_positive_rate": 0.1,
-      "f1": 0.8048632322622842
-    },
-    {
-      "method": "Keyword blacklist",
-      "seed": 45,
-      "detection_rate": 0.5544753712304771,
-      "false_positive_rate": 0.12,
-      "f1": 0.680301657759998
-    },
-    {
-      "method": "No defense (baseline)",
-      "seed": 45,
-      "detection_rate": 0.0013385780026076383,
-      "false_positive_rate": 0.0,
-      "f1": 0.002673574543568381
-    },
-    {
-      "method": "OLYMPUS-LLM-Defense",
-      "seed": 46,
-      "detection_rate": 0.9477174569766104,
-      "false_positive_rate": 0.04,
-      "f1": 0.9538186888849719
-    },
-    {
-      "method": "Pattern-matching only",
-      "seed": 46,
-      "detection_rate": 0.7734728172565473,
-      "false_positive_rate": 0.06,
-      "f1": 0.8486437795533537
-    },
-    {
-      "method": "Perplexity filter",
-      "seed": 46,
-      "detection_rate": 0.7031721439360022,
-      "false_positive_rate": 0.1,
-      "f1": 0.7895029079499916
-    },
-    {
-      "method": "Keyword blacklist",
-      "seed": 46,
-      "detection_rate": 0.5395242512710949,
-      "false_positive_rate": 0.12,
-      "f1": 0.6689297575980799
-    },
-    {
-      "method": "No defense (baseline)",
-      "seed": 46,
-      "detection_rate": 0.0016188950885871677,
-      "false_positive_rate": 0.0,
-      "f1": 0.003232553779183842
-    },
-    {
-      "method": "OLYMPUS-LLM-Defense",
-      "seed": 47,
-      "detection_rate": 0.9336667814000142,
-      "false_positive_rate": 0.04,
-      "f1": 0.9466497967044168
-    },
-    {
-      "method": "Pattern-matching only",
-      "seed": 47,
-      "detection_rate": 0.7885076134106118,
-      "false_positive_rate": 0.06,
-      "f1": 0.8576146521404714
-    },
-    {
-      "method": "Perplexity filter",
-      "seed": 47,
-      "detection_rate": 0.711212207161257,
-      "false_positive_rate": 0.1,
-      "f1": 0.7945453570019902
-    },
-    {
-      "method": "Keyword blacklist",
-      "seed": 47,
-      "detection_rate": 0.5526328683916578,
-      "false_positive_rate": 0.12,
-      "f1": 0.6789130634341644
-    },
-    {
-      "method": "No defense (baseline)",
-      "seed": 47,
-      "detection_rate": 0,
-      "false_positive_rate": 0.0,
-      "f1": 0.0
-    },
-    {
-      "method": "OLYMPUS-LLM-Defense",
-      "seed": 48,
-      "detection_rate": 0.9349230086564783,
-      "false_positive_rate": 0.04,
-      "f1": 0.9472950727418087
-    },
-    {
-      "method": "Pattern-matching only",
-      "seed": 48,
-      "detection_rate": 0.7784151136044342,
-      "false_positive_rate": 0.06,
-      "f1": 0.851610039029932
-    },
-    {
-      "method": "Perplexity filter",
-      "seed": 48,
-      "detection_rate": 0.7179700706295671,
-      "false_positive_rate": 0.1,
-      "f1": 0.7987448914215489
-    },
-    {
-      "method": "Keyword blacklist",
-      "seed": 48,
-      "detection_rate": 0.5417623860194695,
-      "false_positive_rate": 0.12,
-      "f1": 0.6706473164031875
-    },
-    {
-      "method": "No defense (baseline)",
-      "seed": 48,
-      "detection_rate": 0.006058248111859731,
-      "false_positive_rate": 0.0,
-      "f1": 0.012043521538576702
-    },
-    {
-      "method": "OLYMPUS-LLM-Defense",
-      "seed": 49,
-      "detection_rate": 0.9494276403491673,
-      "false_positive_rate": 0.04,
-      "f1": 0.9546840510033707
-    },
-    {
-      "method": "Pattern-matching only",
-      "seed": 49,
-      "detection_rate": 0.7842128894733714,
-      "false_positive_rate": 0.06,
-      "f1": 0.8550680638933036
-    },
-    {
-      "method": "Perplexity filter",
-      "seed": 49,
-      "detection_rate": 0.7328352481035936,
-      "false_positive_rate": 0.1,
-      "f1": 0.8078602175316109
-    },
-    {
-      "method": "Keyword blacklist",
-      "seed": 49,
-      "detection_rate": 0.5606869837245677,
-      "false_positive_rate": 0.12,
-      "f1": 0.6849568418028108
-    },
-    {
-      "method": "No defense (baseline)",
-      "seed": 49,
-      "detection_rate": 0,
-      "false_positive_rate": 0.0,
-      "f1": 0.0
-    },
-    {
-      "method": "OLYMPUS-LLM-Defense",
-      "seed": 50,
-      "detection_rate": 0.9321335037023365,
-      "false_positive_rate": 0.04,
-      "f1": 0.9458610493104957
-    },
-    {
-      "method": "Pattern-matching only",
-      "seed": 50,
-      "detection_rate": 0.7801217688879104,
-      "false_positive_rate": 0.06,
-      "f1": 0.8526303773407249
-    },
-    {
-      "method": "Perplexity filter",
-      "seed": 50,
-      "detection_rate": 0.7151567716004048,
-      "false_positive_rate": 0.1,
-      "f1": 0.7970008945969438
-    },
-    {
-      "method": "Keyword blacklist",
-      "seed": 50,
-      "detection_rate": 0.5443357134932562,
-      "false_positive_rate": 0.12,
-      "f1": 0.6726154333258131
-    },
-    {
-      "method": "No defense (baseline)",
-      "seed": 50,
-      "detection_rate": 0,
-      "false_positive_rate": 0.0,
-      "f1": 0.0
-    },
-    {
-      "method": "OLYMPUS-LLM-Defense",
-      "seed": 51,
-      "detection_rate": 0.9404809447073215,
-      "false_positive_rate": 0.04,
-      "f1": 0.9501397363267994
-    },
-    {
-      "method": "Pattern-matching only",
-      "seed": 51,
-      "detection_rate": 0.7918018507753467,
-      "false_positive_rate": 0.06,
-      "f1": 0.8595594347192553
-    },
-    {
-      "method": "Perplexity filter",
-      "seed": 51,
-      "detection_rate": 0.7297512997303898,
-      "false_positive_rate": 0.1,
-      "f1": 0.8059828108430973
-    },
-    {
-      "method": "Keyword blacklist",
-      "seed": 51,
-      "detection_rate": 0.5657871621356445,
-      "false_positive_rate": 0.12,
-      "f1": 0.6887491760119345
-    },
-    {
-      "method": "No defense (baseline)",
-      "seed": 51,
-      "detection_rate": 0.0014783455813066422,
-      "false_positive_rate": 0.0,
-      "f1": 0.002952323655658699
-    }
-  ],
-  "module6_titan_evolution": [
-    {
-      "method": "OLYMPUS-TITAN",
-      "seed": 42,
-      "best_fitness": 0.8471181934084414,
-      "convergence_gen": 28
-    },
-    {
-      "method": "CMA-ES",
-      "seed": 42,
-      "best_fitness": 0.7765419279933696,
-      "convergence_gen": 27
-    },
-    {
-      "method": "NSGA-II",
-      "seed": 42,
-      "best_fitness": 0.7454719801311677,
-      "convergence_gen": 41
-    },
-    {
-      "method": "PSO",
-      "seed": 42,
-      "best_fitness": 0.7422014218892671,
-      "convergence_gen": 43
-    },
-    {
-      "method": "Standard-GA",
-      "seed": 42,
-      "best_fitness": 0.6866463668813544,
-      "convergence_gen": 33
-    },
-    {
-      "method": "Random",
-      "seed": 42,
-      "best_fitness": 0.49465325043005665,
-      "convergence_gen": 21
-    },
-    {
-      "method": "OLYMPUS-TITAN",
-      "seed": 43,
-      "best_fitness": 0.8799721690208174,
-      "convergence_gen": 24
-    },
-    {
-      "method": "CMA-ES",
-      "seed": 43,
-      "best_fitness": 0.7874055173273143,
-      "convergence_gen": 50
-    },
-    {
-      "method": "NSGA-II",
-      "seed": 43,
-      "best_fitness": 0.7109748163252656,
-      "convergence_gen": 45
-    },
-    {
-      "method": "PSO",
-      "seed": 43,
-      "best_fitness": 0.7169621090037432,
-      "convergence_gen": 23
-    },
-    {
-      "method": "Standard-GA",
-      "seed": 43,
-      "best_fitness": 0.6575191701976466,
-      "convergence_gen": 20
-    },
-    {
-      "method": "Random",
-      "seed": 43,
-      "best_fitness": 0.5068095791978319,
-      "convergence_gen": 36
-    },
-    {
-      "method": "OLYMPUS-TITAN",
-      "seed": 44,
-      "best_fitness": 0.8290216333340107,
-      "convergence_gen": 47
-    },
-    {
-      "method": "CMA-ES",
-      "seed": 44,
-      "best_fitness": 0.793585584898043,
-      "convergence_gen": 23
-    },
-    {
-      "method": "NSGA-II",
-      "seed": 44,
-      "best_fitness": 0.7463519643210542,
-      "convergence_gen": 20
-    },
-    {
-      "method": "PSO",
-      "seed": 44,
-      "best_fitness": 0.7227957427420041,
-      "convergence_gen": 27
-    },
-    {
-      "method": "Standard-GA",
-      "seed": 44,
-      "best_fitness": 0.6819769595655162,
-      "convergence_gen": 25
-    },
-    {
-      "method": "Random",
-      "seed": 44,
-      "best_fitness": 0.5017796995506241,
-      "convergence_gen": 44
-    },
-    {
-      "method": "OLYMPUS-TITAN",
-      "seed": 45,
-      "best_fitness": 0.8468290928459156,
-      "convergence_gen": 22
-    },
-    {
-      "method": "CMA-ES",
-      "seed": 45,
-      "best_fitness": 0.8029245271915363,
-      "convergence_gen": 29
-    },
-    {
-      "method": "NSGA-II",
-      "seed": 45,
-      "best_fitness": 0.7358994091417022,
-      "convergence_gen": 20
-    },
-    {
-      "method": "PSO",
-      "seed": 45,
-      "best_fitness": 0.7165765976100836,
-      "convergence_gen": 23
-    },
-    {
-      "method": "Standard-GA",
-      "seed": 45,
-      "best_fitness": 0.6778871780553135,
-      "convergence_gen": 29
-    },
-    {
-      "method": "Random",
-      "seed": 45,
-      "best_fitness": 0.5097836736985512,
-      "convergence_gen": 47
-    },
-    {
-      "method": "OLYMPUS-TITAN",
-      "seed": 46,
-      "best_fitness": 0.8654349139532207,
-      "convergence_gen": 38
-    },
-    {
-      "method": "CMA-ES",
-      "seed": 46,
-      "best_fitness": 0.7669456345130945,
-      "convergence_gen": 38
-    },
-    {
-      "method": "NSGA-II",
-      "seed": 46,
-      "best_fitness": 0.7491687867782636,
-      "convergence_gen": 36
-    },
-    {
-      "method": "PSO",
-      "seed": 46,
-      "best_fitness": 0.6988865447601663,
-      "convergence_gen": 24
-    },
-    {
-      "method": "Standard-GA",
-      "seed": 46,
-      "best_fitness": 0.6380518324634114,
-      "convergence_gen": 21
-    },
-    {
-      "method": "Random",
-      "seed": 46,
-      "best_fitness": 0.47564144363485017,
-      "convergence_gen": 20
-    },
-    {
-      "method": "OLYMPUS-TITAN",
-      "seed": 47,
-      "best_fitness": 0.8373335628000286,
-      "convergence_gen": 34
-    },
-    {
-      "method": "CMA-ES",
-      "seed": 47,
-      "best_fitness": 0.7970152268212237,
-      "convergence_gen": 38
-    },
-    {
-      "method": "NSGA-II",
-      "seed": 47,
-      "best_fitness": 0.7267167132703926,
-      "convergence_gen": 32
-    },
-    {
-      "method": "PSO",
-      "seed": 47,
-      "best_fitness": 0.7299558259943828,
-      "convergence_gen": 39
-    },
-    {
-      "method": "Standard-GA",
-      "seed": 47,
-      "best_fitness": 0.7001426956895465,
-      "convergence_gen": 20
-    },
-    {
-      "method": "Random",
-      "seed": 47,
-      "best_fitness": 0.5052945365176952,
-      "convergence_gen": 50
-    },
-    {
-      "method": "OLYMPUS-TITAN",
-      "seed": 48,
-      "best_fitness": 0.8398460173129566,
-      "convergence_gen": 42
-    },
-    {
-      "method": "CMA-ES",
-      "seed": 48,
-      "best_fitness": 0.7768302272088683,
-      "convergence_gen": 37
-    },
-    {
-      "method": "NSGA-II",
-      "seed": 48,
-      "best_fitness": 0.7247782915584108,
-      "convergence_gen": 26
-    },
-    {
-      "method": "PSO",
-      "seed": 48,
-      "best_fitness": 0.754687855727827,
-      "convergence_gen": 42
-    },
-    {
-      "method": "Standard-GA",
-      "seed": 48,
-      "best_fitness": 0.6809055292030829,
-      "convergence_gen": 50
-    },
-    {
-      "method": "Random",
-      "seed": 48,
-      "best_fitness": 0.4879977605169737,
-      "convergence_gen": 45
-    },
-    {
-      "method": "OLYMPUS-TITAN",
-      "seed": 49,
-      "best_fitness": 0.8688552806983345,
-      "convergence_gen": 23
-    },
-    {
-      "method": "CMA-ES",
-      "seed": 49,
-      "best_fitness": 0.7884257789467428,
-      "convergence_gen": 30
-    },
-    {
-      "method": "NSGA-II",
-      "seed": 49,
-      "best_fitness": 0.7403175005680115,
-      "convergence_gen": 21
-    },
-    {
-      "method": "PSO",
-      "seed": 49,
-      "best_fitness": 0.6860692666545757,
-      "convergence_gen": 41
-    },
-    {
-      "method": "Standard-GA",
-      "seed": 49,
-      "best_fitness": 0.7113531611150627,
-      "convergence_gen": 24
-    },
-    {
-      "method": "Random",
-      "seed": 49,
-      "best_fitness": 0.5090678235447386,
-      "convergence_gen": 34
-    },
-    {
-      "method": "OLYMPUS-TITAN",
-      "seed": 50,
-      "best_fitness": 0.8342670074046731,
-      "convergence_gen": 40
-    },
-    {
-      "method": "CMA-ES",
-      "seed": 50,
-      "best_fitness": 0.7802435377758208,
-      "convergence_gen": 48
-    },
-    {
-      "method": "NSGA-II",
-      "seed": 50,
-      "best_fitness": 0.7410695025722288,
-      "convergence_gen": 30
-    },
-    {
-      "method": "PSO",
-      "seed": 50,
-      "best_fitness": 0.7326176015182769,
-      "convergence_gen": 22
-    },
-    {
-      "method": "Standard-GA",
-      "seed": 50,
-      "best_fitness": 0.6661570802430936,
-      "convergence_gen": 37
-    },
-    {
-      "method": "Random",
-      "seed": 50,
-      "best_fitness": 0.49658518966719106,
-      "convergence_gen": 22
-    },
-    {
-      "method": "OLYMPUS-TITAN",
-      "seed": 51,
-      "best_fitness": 0.8509618894146429,
-      "convergence_gen": 25
-    },
-    {
-      "method": "CMA-ES",
-      "seed": 51,
-      "best_fitness": 0.8036037015506933,
-      "convergence_gen": 27
-    },
-    {
-      "method": "NSGA-II",
-      "seed": 51,
-      "best_fitness": 0.7462788030960031,
-      "convergence_gen": 37
-    },
-    {
-      "method": "PSO",
-      "seed": 51,
-      "best_fitness": 0.6969185702240911,
-      "convergence_gen": 28
-    },
-    {
-      "method": "Standard-GA",
-      "seed": 51,
-      "best_fitness": 0.6980122794782994,
-      "convergence_gen": 50
-    },
-    {
-      "method": "Random",
-      "seed": 51,
-      "best_fitness": 0.4910149621674341,
-      "convergence_gen": 34
-    }
-  ]
+  }
 }

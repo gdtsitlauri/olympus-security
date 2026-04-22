@@ -35,6 +35,7 @@ try:
     _TORCH = True
 except ImportError:
     _TORCH = False
+    nn = type("_TorchNNFallback", (), {"Module": object})()  # type: ignore[assignment]
 
 
 # ── Synthetic target model (small CNN, MNIST-like) ────────────────────────────

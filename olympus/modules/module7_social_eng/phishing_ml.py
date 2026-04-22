@@ -27,6 +27,7 @@ try:
     _TORCH = True
 except ImportError:
     _TORCH = False
+    nn = type("_TorchNNFallback", (), {"Module": object})()  # type: ignore[assignment]
 
 try:
     from sklearn.ensemble import RandomForestClassifier
@@ -165,7 +166,7 @@ def train_rf(
 
         clf = RandomForestClassifier(
             n_estimators=200, max_depth=15,
-            n_jobs=-1, random_state=42 + fold,
+            n_jobs=1, random_state=42 + fold,
         )
         clf.fit(X_tr_s, y_tr)
         y_pred = clf.predict(X_val_s)

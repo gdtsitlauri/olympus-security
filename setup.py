@@ -6,10 +6,16 @@ with open("README.md", encoding="utf-8") as f:
 setup(
     name="olympus-security",
     version="1.0.0",
-    description="OLYMPUS: Autonomous AI Security Intelligence System",
+    description="OLYMPUS-SECURITY: AI-native cyber offense/defense research platform",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    author="OLYMPUS Research Team",
+    author="George David Tsitlauri",
+    author_email="gdtsitlauri@gmail.com",
+    url="https://gdtsitlauri.dev",
+    project_urls={
+        "Homepage": "https://gdtsitlauri.dev",
+        "Source": "https://github.com/gdtsitlauri/olympus-security",
+    },
     license="MIT",
     packages=find_packages(),
     python_requires=">=3.11",

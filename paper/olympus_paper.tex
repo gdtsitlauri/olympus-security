@@ -12,111 +12,239 @@
 
 \begin{document}
 
-\title{OLYMPUS: An Autonomous Security Intelligence Research Platform\\with Co-Evolutionary Attack-Defense Optimization via TITAN}
+\title{OLYMPUS-SECURITY: An AI-Native Cyber Offense/Defense Research Platform\\for Synthetic Adversarial Experimentation and TITAN Co-Evolution}
 
 \author{
   \IEEEauthorblockN{George David Tsitlauri}
   \IEEEauthorblockA{
-    \textit{Dept. of Informatics \& Telecommunications}\\
-    \textit{University of Thessaly, Greece}\\
-    gdtsitlauri@gmail.com
+    gdtsitlauri@gmail.com\\
+    \url{https://gdtsitlauri.dev}\\
+    \url{https://github.com/gdtsitlauri}
   }
 }
 
 \maketitle
 
 \begin{abstract}
-OLYMPUS is a modular cybersecurity research platform that integrates offensive,
-defensive, and analytical security components under a shared orchestration layer.
-Its central algorithmic component is \textbf{TITAN}, a co-evolutionary
-attack-defense module that searches strategy populations under a common fitness
-model. The current repository release contains a substantial implemented codebase,
-including a CLI, FastAPI surface, dashboard, shared knowledge base, and benchmark
-export scripts. The strongest current evidence in the repository is synthetic
-calibration data for selected modules and for TITAN ablations. This paper
-therefore presents OLYMPUS primarily as an implemented research platform with
-clearly labeled synthetic evidence, rather than as a finished real-world
-benchmark leader.
+OLYMPUS-SECURITY is a modular cyber research platform designed for AI-native
+offense/defense experimentation rather than for narrow static benchmark
+competition. The repository integrates offensive workflows, defensive models,
+threat-intelligence and forensic utilities, a shared orchestration layer, and a
+co-evolutionary optimization engine called TITAN. The current release contains
+substantial implemented code, a FastAPI control surface, a CLI, a dashboard, and
+reproducible experiment exporters. Its strongest saved evidence is synthetic and
+simulation-first: seeded comparative calibration for malware-style detection,
+social-engineering defense, LLM-defense workflows, and TITAN ablations. This
+paper therefore positions OLYMPUS-SECURITY as a defensible adaptive cyber
+research platform whose current results support internal comparative reasoning
+and architectural study, not real-world benchmark leadership. The main
+contribution is the combination of platform implementation, explicit evidence
+typing, and reproducible synthetic attacker/defender experimentation.
 \end{abstract}
 
 \begin{IEEEkeywords}
-cybersecurity, autonomous security, co-evolutionary algorithms, LLM defense, malware detection, digital forensics
+cybersecurity, adversarial simulation, co-evolutionary optimization, LLM defense, malware detection, synthetic evaluation
 \end{IEEEkeywords}
 
 \section{Introduction}
 
-Security tooling is often fragmented: one tool for malware analysis, another for
-threat intelligence, another for LLM safety, and yet another for forensics.
-OLYMPUS explores a unifying research architecture that keeps these capabilities in
-one codebase and allows them to share orchestration, logging, and knowledge.
+Cybersecurity research often splits into disconnected verticals: malware
+detection, phishing defense, LLM safety, forensics, and offensive tooling are
+usually built and evaluated in separate environments. This fragmentation makes it
+hard to study attacker/defender adaptation at the platform level. OLYMPUS-SECURITY
+addresses that gap by treating cyber offense and defense as a unified
+research-engineering problem.
 
-The repository's value lies in implementation breadth plus explicit evidence
-hygiene. It already contains synthetic calibration studies and export pipelines,
-but it does not yet justify strong external claims about real-world benchmark
-dominance.
+The current repository is not best understood as a classic real-dataset intrusion
+detection paper. Its most defensible contribution is different: OLYMPUS-SECURITY
+is a large implemented research platform for controlled, synthetic,
+simulation-first cyber experimentation. That positioning matters because
+attacker/defender systems often need closed-loop, repeatable, authorization-safe
+research environments before they move to external datasets or cyber ranges.
 
-\section{Platform Overview}
+The repository already contains real code and persistent experiment exports. The
+repair needed here was methodological framing. Synthetic metrics are acceptable
+for this class of research, but only if they are clearly labeled as synthetic,
+calibration, adversarial-simulation, or proxy results rather than as direct
+evidence of operational superiority. The revised repository now makes that
+distinction explicit in code, JSON exports, README documentation, and this paper.
 
-OLYMPUS contains:
+\section{System Architecture}
+
+OLYMPUS-SECURITY combines shared infrastructure with ten security-oriented module
+families:
 \begin{itemize}
-  \item a shared orchestrator,
-  \item a shared knowledge base,
-  \item an audit-log path,
-  \item ten security-oriented module families,
-  \item the TITAN co-evolutionary engine,
-  \item a CLI, FastAPI API, and dashboard surface.
+  \item \textbf{Core layer:} orchestration, logging, configuration, and knowledge management.
+  \item \textbf{Interfaces:} FastAPI, CLI, and dashboard surfaces.
+  \item \textbf{Offense-oriented paths:} penetration testing, exploit/zero-day scaffolding, threat-intelligence support, and strategy search.
+  \item \textbf{Defense-oriented paths:} malware detection, deception, social-engineering defense, AI integrity, LLM defense, and digital forensics.
+  \item \textbf{Adaptive engine:} TITAN, a co-evolutionary attack/defense optimization loop.
 \end{itemize}
 
-This makes the repo materially stronger than a concept-only architecture note.
+This architecture matters because OLYMPUS-SECURITY is not only a paper concept.
+It contains a shared software substrate that allows modules to be orchestrated,
+inspected, and extended under one platform identity.
 
-\section{TITAN Module}
+\section{Adversarial Simulation Methodology}
 
-TITAN models an attack and defense population that evolve against one another
-through iterative mutation, crossover, and shared fitness evaluation. The
-intended research purpose is to study adaptive search dynamics under a common
-framework, not to claim an operational autonomous red-team/blue-team system.
+\subsection{Why Synthetic Evaluation Is Legitimate Here}
 
-\section{Current Experimental Evidence}
-
-The repository includes exported comparison tables and ablation files for:
+Synthetic or simulation-first evaluation is methodologically acceptable for
+adaptive cyber experimentation when the goal is to study internal dynamics,
+architecture, and comparative behavior under controlled conditions. In OLYMPUS,
+the synthetic layer serves three concrete purposes:
 \begin{itemize}
-  \item Module 2 malware-detection calibration,
+  \item repeatable internal calibration across modules and baselines,
+  \item attacker/defender experimentation without unsafe live deployment claims,
+  \item persistent result exports for regression tracking and manuscript alignment.
+\end{itemize}
+
+This does \emph{not} make synthetic metrics equivalent to field performance.
+Instead, it defines a narrower and defensible claim class: OLYMPUS supports
+simulation-first cyber research and preserves its artifacts honestly.
+
+\subsection{Comparison Experiments}
+
+The repository exports seeded synthetic comparisons for four representative
+research paths:
+\begin{itemize}
+  \item Module 2 malware-style detection calibration,
   \item Module 7 social-engineering detection calibration,
-  \item Module 9 jailbreak-detection calibration,
-  \item Module 6 TITAN evolution and ablation.
+  \item Module 9 adversarial prompt-defense calibration,
+  \item Module 6 TITAN search calibration against generic optimizers.
 \end{itemize}
 
-These artifacts are generated by seeded synthetic benchmark harnesses. They are
-useful because they:
+These comparisons use shared seeds, explicit reference methods, and structured
+JSON metadata describing evidence basis, metric meaning, and non-claims. They are
+best interpreted as internal comparative calibration.
+
+\subsection{TITAN Co-Evolution}
+
+TITAN models attacker and defender populations under iterative mutation,
+crossover, selection, and coupled search. The repository's ablation path
+simulates the effect of removing crossover, adaptive mutation, neural fitness,
+elitism, and co-evolution itself. The resulting fitness values are proxy
+objectives under a common synthetic scoring model, which makes them suitable for
+component attribution but not for field-performance claims.
+
+\section{Experimental Protocol}
+
+All currently committed experiments use ten fixed seeds $\{42,\dots,51\}$ and
+write machine-readable outputs to the \texttt{results/} tree. The revised export
+pipeline persists:
 \begin{itemize}
-  \item verify that the modules and reporting paths execute coherently,
-  \item make internal comparisons inspectable,
-  \item preserve tables and JSON outputs for future regression checks.
+  \item schema version,
+  \item generation timestamp,
+  \item author/contact metadata,
+  \item evidence basis,
+  \item per-experiment metric semantics,
+  \item reference method or reference configuration,
+  \item raw seed-level runs,
+  \item summary statistics and significance metadata.
 \end{itemize}
 
-They should not be overread as real external benchmark evidence.
+This change is important because it prevents the saved files from being mistaken
+for unsupported external benchmark claims. The JSON export is now the canonical
+artifact, while LaTeX tables are derived summaries for reporting.
 
-\section{Limitations}
+\section{Results}
 
+\subsection{Synthetic Comparison Results}
+
+Table~\ref{tab:synthetic_summary} summarizes the main current calibration
+findings. These numbers are internally meaningful because they are saved,
+seeded, reproducible, and paired with explicit evidence metadata. They should
+still be interpreted as synthetic calibration rather than real benchmark wins.
+
+\begin{table}[h]
+\centering
+\caption{Synthetic comparison summary (mean $\pm$ std over 10 seeds).}
+\label{tab:synthetic_summary}
+\begin{tabular}{lrr}
+\toprule
+Study & OLYMPUS & Reference \\
+\midrule
+Module 2 F1 & \textbf{0.9752 $\pm$ 0.0045} & 0.9026 $\pm$ 0.0142 \\
+Module 7 F1 & \textbf{0.9639 $\pm$ 0.0048} & 0.8124 $\pm$ 0.0067 \\
+Module 9 F1 & \textbf{0.9499 $\pm$ 0.0042} & 0.8547 $\pm$ 0.0036 \\
+Module 6 best fitness & \textbf{0.8500 $\pm$ 0.0165} & 0.6799 $\pm$ 0.0217 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Across the saved primary metrics, OLYMPUS outperforms the configured reference
+methods within the current synthetic protocol. The paired internal tests in the
+saved JSON summaries indicate significance at $p = 0.0051$ for the leading
+comparisons reported in Table~\ref{tab:synthetic_summary}. This is useful evidence
+for internal architecture comparison, but it is not a valid basis for claims
+about public benchmark leadership or deployment-grade superiority.
+
+\subsection{TITAN Ablation Results}
+
+The TITAN ablation study is one of the most valuable artifacts in the repository
+because it addresses mechanism rather than headline score. Table~\ref{tab:titan_ablation}
+shows that removing co-evolution causes the largest observed drop in attack-side
+fitness, while mutation stress variants remain statistically close to the full
+configuration inside the present synthetic loop.
+
+\begin{table}[h]
+\centering
+\caption{Selected TITAN ablation results (attack fitness, mean $\pm$ std).}
+\label{tab:titan_ablation}
+\begin{tabular}{lrr}
+\toprule
+Configuration & Attack fitness & p vs. TITAN-Full \\
+\midrule
+TITAN-Full & \textbf{0.8533 $\pm$ 0.0158} & -- \\
+TITAN-NoCoEvolution & 0.7379 $\pm$ 0.0145 & 0.0051 \\
+TITAN-NoCrossover & 0.7742 $\pm$ 0.0158 & 0.0051 \\
+TITAN-NoAdaptiveMut & 0.7982 $\pm$ 0.0148 & 0.0051 \\
+TITAN-NoMutation & 0.8576 $\pm$ 0.0157 & 0.3329 \\
+TITAN-HighMutation & 0.8546 $\pm$ 0.0194 & 0.6465 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This pattern supports an appropriately scoped conclusion: within the current
+synthetic attacker/defender environment, coupled co-evolution and crossover are
+important contributors to TITAN's behavior, while mutation-rate changes are not
+decisive failure modes in the present toy setup.
+
+\section{Limitations and Threats to Validity}
+
+The main limitations are explicit:
 \begin{itemize}
-  \item Current benchmark artifacts are synthetic calibration studies.
-  \item Real malware, phishing, jailbreak, and forensics evaluations remain future work.
-  \item Offensive validation must remain tightly authorization-bound.
+  \item Module 2, 7, and 9 results are synthetic detection calibrations, not evaluations on public operational corpora.
+  \item TITAN fitness is a proxy objective under a shared simulation model, not a field measurement.
+  \item Offensive paths remain research-only and require controlled authorization for any future live validation.
+  \item The current evidence does not establish superiority over production security systems or commercial tools.
 \end{itemize}
+
+These limitations do not invalidate the repository. They define the current
+evidence boundary and preserve methodological credibility.
 
 \section{Conclusion}
 
-OLYMPUS is a credible large-scale security research platform once its evidence is
-described honestly. The codebase is real, the module structure is real, and the
-benchmark/export harnesses are real. The main repair was methodological framing:
-the current repository release should be treated as a substantial implemented
-platform with synthetic calibration evidence, awaiting broader real-data and
-real-world benchmark campaigns.
+OLYMPUS-SECURITY is best presented as a strong synthetic attacker/defender cyber
+research platform. The codebase is real, the architecture is broad, the TITAN
+module gives the repository a distinctive adaptive-security identity, and the
+saved experiments now carry explicit evidence typing and reproducible metadata.
+The repository therefore supports a credible high-end claim: OLYMPUS is a
+serious AI-native cyber experimentation environment with meaningful synthetic and
+co-evolutionary evidence. What it does not yet support are real-world benchmark
+dominance claims. The next step is not rhetorical escalation; it is external
+validation on task-specific datasets and controlled cyber ranges.
 
 \bibliographystyle{IEEEtran}
 \begin{thebibliography}{9}
 \bibitem{anderson2018ember}
 H.~S. Anderson and P.~Roth, ``EMBER: An open dataset for training static PE malware machine learning models,'' \textit{arXiv:1804.04637}, 2018.
+
+\bibitem{eiben2003evolutionary}
+A.~E. Eiben and J.~E. Smith, \textit{Introduction to Evolutionary Computing}. Springer, 2003.
+
+\bibitem{carlini2023jailbreak}
+N.~Carlini \textit{et al.}, ``Are aligned neural networks adversarially aligned?,'' in \textit{Advances in Neural Information Processing Systems}, 2023.
 \end{thebibliography}
 
 \end{document}

@@ -1,16 +1,16 @@
 \begin{table}[h]
 \centering
-\caption{OLYMPUS vs Baselines: Module9 Llm Defense}
+\caption{Synthetic calibration summary for Module 9 LLM Defense Calibration (mean $\pm$ std over 10 seeds).}
 \label{tab:module9_llm_defense}
 \begin{tabular}{lrrr}
 \toprule
 Method & Detection Rate & False Positive Rate & F1 \\
 \midrule
-OLYMPUS-LLM-Defense & \textbf{0.9400±0.0078} & \textbf{0.0400±0.0000} & \textbf{0.9499±0.0040} \\
-Pattern-matching only & 0.7837±0.0058 & 0.0600±0.0000 & 0.8547±0.0034 \\
-Perplexity filter & 0.7208±0.0088 & 0.1000±0.0000 & 0.8005±0.0054 \\
-Keyword blacklist & 0.5520±0.0084 & 0.1200±0.0000 & 0.6784±0.0064 \\
-No defense (baseline) & 0.0011±0.0018 & 0.0000±0.0000 & 0.0022±0.0035 \\
+OLYMPUS-LLM-Defense & 0.9400$\pm$0.0083 & 0.0400$\pm$0.0000 & \textbf{0.9499$\pm$0.0042} \\
+Pattern-matching only & 0.7837$\pm$0.0061 & 0.0600$\pm$0.0000 & 0.8547$\pm$0.0036 \\
+Perplexity filter & 0.7208$\pm$0.0092 & 0.1000$\pm$0.0000 & 0.8005$\pm$0.0057 \\
+Keyword blacklist & 0.5520$\pm$0.0089 & 0.1200$\pm$0.0000 & 0.6784$\pm$0.0067 \\
+No defense (baseline) & 0.0000$\pm$0.0000 & 0.0000$\pm$0.0000 & 0.0000$\pm$0.0000 \\
 \bottomrule
 \end{tabular}
 \end{table}
