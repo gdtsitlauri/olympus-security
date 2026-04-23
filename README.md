@@ -1,6 +1,6 @@
 # OLYMPUS-SECURITY
 
-**AI-native cyber offense/defense research platform for synthetic adversarial experimentation, adaptive security reasoning, and co-evolutionary attacker/defender studies.**
+**AI security research platform covering offensive, defensive, forensic, and intelligence modules — with co-evolutionary attacker/defender simulation, reverse engineering, and malware analysis.**
 
 
 | Item | Status |
