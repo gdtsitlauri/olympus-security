@@ -80,6 +80,8 @@ results/knowledge_base.json
 logs/
 *.log
 audit_*.jsonl
+data/audit.jsonl
+data/knowledge_base.json
 
 # Docker
 .dockerignore
